@@ -1,0 +1,424 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[a4paper, top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{INSPT - UTN}
+\lhead{Jonatan Imperi}
+\cfoot{\thepage}
+
+
+\NewDocumentCommand{\Suma}{m m m m O{}}{
+	\begin{minipage}{0.28\linewidth}
+		\textbf{\hspace{1cm} #4)}\\[-0.5em]
+		\[
+		\begin{array}{r}
+			\textcolor{red}{\scriptsize \texttt{#5}} \\[-0.2em]
+			\texttt{\Large #1} \\
+			\text{+\hspace{2.0cm}} \\
+			\texttt{\Large #2} \\[0.1em]
+			\hline \\[-0.7em]
+			\texttt{\Large #3}
+		\end{array}
+		\]
+	\end{minipage}
+}
+
+\NewDocumentCommand{\Resta}{m m m m O{}}{
+	\begin{minipage}{0.28\linewidth}
+		\textbf{\hspace{1cm} #4)}\\[-0.5em]
+		\[
+		\begin{array}{r}
+			\textcolor{blue}{\scriptsize \texttt{#5}} \\ [-0.2em]
+			\texttt{\Large #1} \\
+			\text{-\hspace{2.0cm}}\\ 
+			\texttt{\Large #2} \\[0.1em] 
+			\hline \\ [-0.7em]
+			\texttt{\Large #3}
+		\end{array}
+		\]
+	\end{minipage}
+}
+
+\NewDocumentCommand{\Xor}{m m m o}{
+	\begin{minipage}{0.22\linewidth}
+		\IfValueT{#4}{\textbf{#4}\\[-0.5em]}
+		\[
+		\begin{array}{r}
+			\texttt{#1} \\
+			\text{Xor\hspace{1.0cm}} \\
+			\texttt{#2} \\
+			\hline
+			\texttt{#3}
+		\end{array}
+		\]
+	\end{minipage}
+}
+
+
+\begin{document}
+	
+	\begin{center}
+		
+		\LARGE \textbf{Sistemas de computación 1} \\[0.5cm]
+		\LARGE Trabajo práctico n° 2 \\
+	\end{center}
+	
+	\section*{Aritmética binaria, octal y hexadecimal}
+	1. Resolver las siguientes operaciones en BINARIO (Resultado y operaciones deben estar en el desarrollo).
+	\renewcommand{\theenumi}{\alph{enumi}}
+	\begin{enumerate}
+		\item  10110 + 101001
+		\item  100111 + 1011
+		\item  111001 + 11011
+		\item  100010 - 1011
+		\item  111000 - 100111
+		\item  101101 - 1111 
+	\end{enumerate}
+
+	\subsection*{Método de resolución}
+	Para llevar a cabo las operaciones entre números binarios se alinearon a partir de la derecha coincidiendo sus correspondientes posiciones. La suma se efectúa de igual forma que en los números decimales, pero en el caso de operar 1+1 (que es 2 en decimal y 10 en binario) queda un acarreo (marcados en rojo) quedando 0 bajo de la línea de igualdad y "llevando" 1 para ser sumado en la siguiente posición (bit de mayor peso). Si el acarreo llevara un 1 y se tendrían que sumar otros 1 (siendo 3 el resultado en decimal y 11 en binario) queda 1 bajo la línea de igualdad y 1 pasa al bit de mayor peso.
+	Para la resta también se opera de forma similar a la decimal y cuando no puede hacerse como ser el caso de 0-1 "se le pide" a la posición de la izquierda (bit de mayor peso), y si este llegara a ser también 0 se llega hasta el próximo 1. En estos sucesivos préstamos siempre se le van restando 1 de forma que una vez que se llega a la cifra que primero pidió el préstamo terminan quedando 10 (2 en decimal) mientras que las intermedias quedan en 1 (en azul quedan marcadas como termina cada posición).\\
+		
+	\begin{center}
+		\begin{tabular}{ccc}
+			\Suma{10110}{101001}{111111}{a}&
+			\Suma{100111}{1011}{110010}{b} [~1~1~1~1~~~]&
+			\Suma{111001}{11011}{1010100}{c} [1~1~~~1~1~~~]\\ \\ 
+			\Resta{100010}{1011}{10111}{d} [1~1~1 10 10] &
+			\Resta{111000}{100111}{10001}{e} [0 1 1 10] &
+			\Resta{101101}{1111}{11110}{f} [1|10|10|10~~]\\
+		\end{tabular}
+	\end{center}
+	
+	2. Resolver las siguientes operaciones en OCTAL (resultado y operaciones deben estar en el desarrollo).
+	\begin{enumerate}
+		\item  456 + 123
+		\item  507 + 265
+		\item  413 - 256
+		\item  602 - 375
+		\item  530 - 164
+		\item  765 - 347 
+	\end{enumerate}
+	
+	\subsection*{Método de resolución}
+	Las sumas y restas en octal se hacen de manera similar a la decimal con la salvedad de que al haber solamente 8 símbolos (0-7) cuando nos resulta un número mayor que 7 en el caso de la suma se lo convierte a binario para luego transformarlo a su equivalente octal tomándose de a 3 bits. Por ejemplo: $12_{10} = 1100_2 = 14_8$. \\
+	En el caso de la resta se hace de manera inversa, cuando el minuendo es menor que el sustraendo y tiene que pedirle a la posición de la izquierda, este número que originalmente es octal tiene convertirse al sistema decimal para efectuar la resta.\\ Por ejemplo: $13_8 - 6_8 = 001011_2 - 000110_2 = 11_{10} - 6_{10}$ 
+	
+		\begin{center}
+		\begin{tabular}{ccc}
+			\Suma{456}{123}{601}{a}[1~1~~] &
+			\Suma{507}{265}{774}{b} [1~~]&
+			\Resta{413}{256}{135}{c} [1~1~]\\ 
+			\Resta{602}{375}{205}{d} [1~1~]&
+			\Resta{530}{164}{344}{e} [1~1~]&
+			\Resta{765}{347}{416}{f} [1~]\\
+		\end{tabular}
+	\end{center}
+	
+\begin{center}
+	\begin{tabular}{cc}
+		% Fila 1
+		\begin{minipage}{0.48\linewidth}
+			\begin{enumerate}[label=\alph*)]
+				\item $6+3 = 9_{10} = 1001_2 = 11_8$ \\ $\textcolor{red}{1}+5+2 = 8_{10} = 1000_2 = 10_8$ \\ $\textcolor{red}{1}+4+1 = 6_8$	
+			\end{enumerate}
+		\end{minipage}
+		&
+		\begin{minipage}{0.48\linewidth}
+			\begin{enumerate}[start=2,label=\alph*)]
+				\item $7+5 = 12_{10} = 1100_2 = 14_8$ \\ $\textcolor{red}{1}+0+6 = 7_8$ \\ $5+2 = 7_8$
+			\end{enumerate}
+		\end{minipage}
+		\\[3em]
+		% Fila 2
+		\begin{minipage}{0.48\linewidth}
+			\begin{enumerate}[start=3,label=\alph*)]
+				\item $(\textcolor{blue}{1}3_8=001011_2=11_{10}) - 6 =5$ \\ $(\textcolor{blue}{1}0_8=001000_2=8_{10})-5 = 3$ \\ $~~3-2 = 1$
+			\end{enumerate}
+		\end{minipage}
+		&
+		\begin{minipage}{0.48\linewidth}
+			\begin{enumerate}[start=4,label=\alph*)]
+				\item $(\textcolor{blue}{1}2_8 = 001010_2 = 10_{10}) - 5 = 5$ \\ $7_8 - 7_8 = 0$ \\ $6_8 - 3_8 = 2$
+			\end{enumerate}
+		\end{minipage}
+		\\[3em]
+		% Fila 3
+		\begin{minipage}{0.48\linewidth}
+			\begin{enumerate}[start=5,label=\alph*)]
+				\item $(\textcolor{blue}{1}0_8=001000:2=8_{10}) -4 = 4$ \\ $(\textcolor{blue}{1}2_8 = 001010_2=10_{10})-6=4$ \\ $~~4-1 =3$
+			\end{enumerate}
+		\end{minipage}
+		&
+		\begin{minipage}{0.48\linewidth}
+			\begin{enumerate}[start=6,label=\alph*)]
+				\item $(\textcolor{blue}{1}5_8=001101_2=13_{10})-7=6$ \\ $5-4=1$ \\ $7-3=4$
+			\end{enumerate}
+		\end{minipage}
+	\end{tabular}
+\end{center}
+
+		
+	3. Resolver las siguientes operaciones en HEXADECIMAL (resultado y operaciones deben estar en el desarrollo).
+	\begin{enumerate}
+		\renewcommand{\theenumi}{\alph{enumi}}	
+		\item  6A3 + 2BF
+		\item  3C5 + D1A
+		\item  ABC + 1DE
+		\item  C89 - A1B
+		\item  A4F - 8D2
+		\item  F21 - E09 
+	\end{enumerate}
+
+	\subsection*{Método de resolución} 
+	Al igual que los números en sistema octal, las operaciones de suma y resta se hicieron convirtiendo cada número a su equivalente decimal, aunque los acarreos pasen en su forma hexadecimal. \\ 
+	
+	\begin{center}
+		\begin{tabular}{ccc}
+			\Suma{6A3}{2BF}{962}{a} &
+			\Suma{3C5}{D1A}{10DF}{b} &
+			\Suma{ABC}{1DE}{C9A}{c} \\ 
+			\Resta{C89}{A1B}{26E}{d} &
+			\Resta{A4F}{8D2}{17D}{e} &
+			\Resta{F21}{E09}{117}{f} \\
+		\end{tabular}
+	\end{center} 
+	
+	\vspace{2em} 
+	
+	\begin{center}
+		\begin{tabular}{cc}
+			% Fila 1
+			\begin{minipage}{0.48\linewidth}
+				\begin{enumerate}[label=\alph*)]
+					\item $3+F = 12$ \\ $1+A+B=16$ \\ $1+6+2=9$	
+				\end{enumerate}
+			\end{minipage}
+			&
+			\begin{minipage}{0.48\linewidth}
+				\begin{enumerate}[start=2,label=\alph*)]
+					\item $5+A=F$ \\ $C+1=D$ \\ $3+D=10$
+				\end{enumerate}
+			\end{minipage}
+			\\[3em]
+			% Fila 2
+			\begin{minipage}{0.48\linewidth}
+				\begin{enumerate}[start=3,label=\alph*)]
+					\item $C+E=A$ \\ $B+D=9$ \\ $A+1=C$
+				\end{enumerate}
+			\end{minipage}
+			&
+			\begin{minipage}{0.48\linewidth}
+				\begin{enumerate}[start=4,label=\alph*)]
+					\item $19-B=E$ \\ $7-1=6$ \\ $C-A=2$
+				\end{enumerate}
+			\end{minipage}
+			\\[3em]
+			% Fila 3
+			\begin{minipage}{0.48\linewidth}
+				\begin{enumerate}[start=5,label=\alph*)]
+					\item $F-2=D$ \\ $4-D=7$ \\ $A-8=1$
+				\end{enumerate}
+			\end{minipage}
+			&
+			\begin{minipage}{0.48\linewidth}
+				\begin{enumerate}[start=6,label=\alph*)]
+					\item $11-9=7$ \\ $1-0=1$ \\ $F-E=1$ \\
+				\end{enumerate}
+			\end{minipage}
+		\end{tabular}
+	\end{center} 
+	
+	4. Realizar las siguientes operaciones aritméticas usando CA2
+	\begin{enumerate}
+		\renewcommand{\theenumi}{\alph{enumi}}	
+		\item  17 - 7
+		\item  60 - 25 
+		\item  53 - 82
+		\item  -23 - 25
+		\item  -45 + 36
+		\item  125 - 365
+	\end{enumerate}
+	
+	\subsection*{Método de resolución}
+	Para realizar las operaciones en CA2 primero se convierte a binario natural ambos operando. Luego para efectuar la suma en dicha representación, mientras que los números positivos quedan en su forma de binario natural, a los negativos se los convierte a complemento A1 invirtiendo todos sus bits, para luego al binario obtenido sumarle 1 al bit menos significativo. De esta manera se obtiene el complemento A2 y se efectúa la suma.\\
+	
+	\begin{table}[H]
+		\centering
+		\caption*{\textbf{a) Operación: 15 - 7}}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			\textbf{}       & \textbf{Operando A (15)} & \textbf{Operando B (-7)} \\
+			\hline
+			Binario         & \texttt{00001111}        & \texttt{00000111} \\
+			Complemento A1  & ---                      & \texttt{11111000} \\
+			Complemento A2  & ---                      & \texttt{11111001} \\
+			\hline
+			Suma (A + B)    & \multicolumn{2}{c|}{\texttt{00001000}} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\caption*{\textbf{b) Operación: 60 - 25}}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			\textbf{}       & \textbf{Operando A (60)} & \textbf{Operando B (-25)} \\
+			\hline
+			Binario         & \texttt{00111100}        & \texttt{00011001} \\
+			Complemento A1  & ---                      & \texttt{11100110} \\
+			Complemento A2  & ---                      & \texttt{11100111} \\
+			\hline
+			Suma (A + B)    & \multicolumn{2}{c|}{\texttt{00100011}} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\caption*{\textbf{c) Operación: 53 - 82}}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			\textbf{}       & \textbf{Operando A (53)} & \textbf{Operando B (-82)} \\
+			\hline
+			Binario         & \texttt{00110101}        & \texttt{01010010} \\
+			Complemento A1  & ---                      & \texttt{10101101} \\
+			Complemento A2  & ---                      & \texttt{10101110} \\
+			\hline
+			Suma (A + B)    & \multicolumn{2}{c|}{\texttt{11100011}} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\caption*{\textbf{d) Operación: -23 -25}}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			\textbf{}       & \textbf{Operando A (-23)} & \textbf{Operando B (-25)} \\
+			\hline
+			Binario         & \texttt{00010111}        & \texttt{00011001} \\
+			Complemento A1  & \texttt{11101000}        & \texttt{11100110} \\
+			Complemento A2  & \texttt{11101001}        & \texttt{11100111} \\
+			\hline
+			Suma (A + B)    & \multicolumn{2}{c|}{\texttt{11010000}} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\caption*{\textbf{e) Operación: -45 + 36}}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			\textbf{}       & \textbf{Operando A (-45)} & \textbf{Operando B (36)} \\
+			\hline
+			Binario         & \texttt{00101101}        & \texttt{00100100} \\
+			Complemento A1  & \texttt{11010010}        & ---               \\
+			Complemento A2  & \texttt{11010011}        & ---               \\
+			\hline
+			Suma (A + B)    & \multicolumn{2}{c|}{\texttt{11110111}} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\centering
+		\caption*{\textbf{f) Operación: 125 - 365}}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			\textbf{}       & \textbf{Operando A (125)} & \textbf{Operando B (-365)} \\
+			\hline
+			Binario         & \texttt{001111101}        & \texttt{101101101} \\
+			Complemento A1  & ---                      & \texttt{010010010} \\
+			Complemento A2  & ---                      & \texttt{010010011} \\
+			\hline
+			Suma (A + B)    & \multicolumn{2}{c|}{\texttt{100010000}} \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+		\vspace{3em} 
+	
+	5. Teniendo en cuenta que los códigos de Gray tienen una distancia de 1 bit entre cada uno de sus valores, cree una secuencia de 4 bits que cumpla con las siguientes consignas:
+	\begin{enumerate}
+		\renewcommand{\theenumi}{\alph{enumi}}	
+		\item  Debe tener distancia de 1 bit entre cada uno de sus valores.
+		\item  El primer y último valor de la lista también debe tener una distancia de 1.
+	\end{enumerate}
+	
+	\vspace{2em} 
+	
+	\subsection*{Método de conversión}
+	El código reflejado de Gray se obtiene aplicando la operación Xor bit a bit entre el número en binario y el mismo número desplazado un bit hacia la derecha, consiguiendo así un sistema de numeración binario donde dos números consecutivos difieren en un solo bit.
+	
+	\begin{center}
+		\begin{tabular}{cccc}
+			\Xor{0000}{0000}{0000}[0] &
+			\Xor{0001}{0000}{0001}[1] &
+			\Xor{0010}{0001}{0011}[2] &
+			\Xor{0011}{0001}{0010}[3] \\
+			\\[0.5em]
+			\Xor{0100}{0010}{0110}[4] &
+			\Xor{0101}{0010}{0111}[5] &
+			\Xor{0110}{0011}{0101}[6] &
+			\Xor{0111}{0011}{0100}[7] \\
+			\\[0.5em]
+			\Xor{1000}{0100}{1100}[8] &
+			\Xor{1001}{0100}{1101}[9] &
+			\Xor{1010}{0101}{1111}[10] &
+			\Xor{1011}{0101}{1110}[11] \\
+			\\[0.5em]
+			\Xor{1100}{0110}{1010}[12] &
+			\Xor{1101}{0110}{1011}[13] &
+			\Xor{1110}{0111}{1001}[14] &
+			\Xor{1111}{0111}{1000}[15] \\
+		\end{tabular}
+	\end{center}
+	
+	
+	
+	\begin{table}[h!]
+		\centering
+		\large
+		\begin{tabular}{|c|c|c|}
+			\hline
+			Decimal & Binario & Código Gray \\
+			\hline
+			0  & 0000 & 0000 \\
+			1  & 0001 & 0001 \\
+			2  & 0010 & 0011 \\
+			3  & 0011 & 0010 \\
+			4  & 0100 & 0110 \\
+			5  & 0101 & 0111 \\
+			6  & 0110 & 0101 \\
+			7  & 0111 & 0100 \\
+			8  & 1000 & 1100 \\
+			9  & 1001 & 1101 \\
+			10 & 1010 & 1111 \\
+			11 & 1011 & 1110 \\
+			12 & 1100 & 1010 \\
+			13 & 1101 & 1011 \\
+			14 & 1110 & 1001 \\
+			15 & 1111 & 1000 \\
+			\hline
+		\end{tabular}
+		
+	\end{table}
+
+
+
+	
+\end{document}

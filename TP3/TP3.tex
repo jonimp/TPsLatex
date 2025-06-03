@@ -1,0 +1,508 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[a4paper, top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{INSPT - UTN}
+\lhead{Jonatan Imperi}
+\cfoot{\thepage}
+\renewcommand{\theenumi}{\alph{enumi}}
+
+
+\begin{document}
+	
+	\begin{center}
+		
+		\LARGE \textbf{Sistemas de computación 1} \\[0.5cm]
+		\LARGE Trabajo práctico n° 3 \\
+	\end{center}
+	
+	\section*{Formato normalizado IEEE754 para coma flotande de 32 bits.}
+	
+	1.Obtener la representación del número decimal en el formato normalizado IEEE754 para coma flotante de 32 bits, de los siguientes números:
+	\begin{enumerate}
+		\item -0.00015
+		\item 53.2874
+		\item 291.072
+		\item -6.2265625
+		\item 14
+		\item 3.5
+		\item -12.5
+		\item 10.25
+		\item -6.75	
+	\end{enumerate}	
+
+	\subsection*{Método de conversión}
+	Este formato conformado por 1 bit para el signo, 8 bits para el exponente y 23 bits para la mantisa, se empieza a componer por el primer bit considerando 1 si es negativo y 0 si es positivo. El siguiente paso es representar el número decimal en binario natural para luego trasladar la coma detrás del primer 1 contando cuantos bits se movieron. Este traslado puede ser tanto para la izquierda como para la derecha, según donde se encuentre el primer 1 partiendo desde la izquierda. Si en el traslado se hace para la izquierda, el número será positivo, en cambio si se trasladara hacia la derecha, el número será negativo. 
+	
+		\begin{center}	
+		\colorbox{yellow}{{\textbf{a.} $-0.00015$}}
+		
+		\subsection*{Bit de signo}
+		
+		\[
+		\text{El número es negativo} \Rightarrow \text{bit de signo = } \boxed{1}
+		\]
+		
+		\subsection*{Conversión a binario}
+		
+		
+	~~~~~~~~~~~~~~~~~~~~~~~~~\text{Parte entera: 0 → 0} 
+		\newline
+		
+		\text{Parte decimal: Multiplicamos sucesivamente por 2}
+		
+		\begin{center}
+		\begin{Verbatim}
+			0.00015 * 2 = 0.00030 → 0 
+			0.00030 * 2 = 0.00060 → 0 
+			0.00060 * 2 = 0.00120 → 0 
+			0.00120 * 2 = 0.00240 → 0 
+			0.00240 * 2 = 0.00480 → 0 
+			0.00480 * 2 = 0.00960 → 0 
+			0.00960 * 2 = 0.01920 → 0 
+			0.01920 * 2 = 0.03840 → 0 
+			0.03840 * 2 = 0.07680 → 0 
+			0.07680 * 2 = 0.15360 → 0 
+			0.15360 * 2 = 0.30720 → 0 
+			0.30720 * 2 = 0.61440 → 0 
+			0.61440 * 2 = 1.22880 → 1 
+			0.22880 * 2 = 0.45760 → 0 
+			0.45760 * 2 = 0.91520 → 0 
+			0.91520 * 2 = 1.83040 → 1 
+			0.83040 * 2 = 1.66080 → 1 
+			0.66080 * 2 = 1.32160 → 1 
+			0.32160 * 2 = 0.64320 → 0 
+			0.64320 * 2 = 1.28640 → 1 
+			0.28640 * 2 = 0.57280 → 0 
+			0.57280 * 2 = 1.14560 → 1 
+			0.14560 * 2 = 0.29120 → 0 
+			0.29120 * 2 = 0.58240 → 0 
+			0.58240 * 2 = 1.16480 → 1 
+			0.16480 * 2 = 0.32960 → 0 
+			0.32960 * 2 = 0.65920 → 0 
+			0.65920 * 2 = 1.31840 → 1 
+			0.31840 * 2 = 0.63680 → 0 
+			0.63680 * 2 = 1.27360 → 1 
+			0.27360 * 2 = 0.54720 → 0 
+			0.54720 * 2 = 1.09440 → 1 
+			0.09440 * 2 = 0.18880 → 0 
+			0.18880 * 2 = 0.37760 → 0 
+			0.37760 * 2 = 0.75520 → 0 
+			0.75520 * 2 = 1.51040 → 1 
+			
+						
+		\end{Verbatim}
+		\end{center}
+	
+		Resultado binario: 
+		\[
+		-0.00015_{10} \approx -0.000000000000100111010100100101010010
+		\]
+		
+		\subsection*{Determinación del exponente}
+		
+		Se debe aplicar el sesgo de 127 moviendo 13 lugares a la derecha hasta el primer 1
+		\vspace{-0.5em}
+		\[
+		\text{Exponente real} = -13 \quad \Rightarrow \quad \text{Exponente IEEE} = -13 + 127 = 114
+		\]
+		\vspace{-0.5em}
+		\[
+		114_{10} = 01110010_2
+		\]
+		
+		\subsection*{Mantisa (23 bits)}
+		
+		Se toma lo que sigue después del primer 1 en la forma normalizada:
+		\vspace{-0.5em}
+		\[
+		\text{Mantisa: } \underline{1}.00111010100... \Rightarrow 00111010100100101010010
+		\]
+		
+		\subsection*{Resultado IEEE 754 (formato 32 bits)}
+		
+		\[
+		\text{IEEE 754:} \quad 
+		\boxed{1} \quad \boxed{01110010} \quad \boxed{00111010100100101010010}
+		\]
+
+		Separado en grupos de 4 bits:
+		\vspace{-0.5em}
+		\[
+		\texttt{1011\ 1001\ 0001\ 1101\ 0100\ 1001\ 0101\ 0010}
+		\]
+		
+		---	
+		\end{center}
+	%bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+	\begin{center}	
+		\colorbox{yellow}{{\textbf{b.} $53.2874$}}
+		
+		\subsection*{Bit de signo}
+		
+		\[
+		\text{El número es positivo} \Rightarrow \text{bit de signo = } \boxed{0}
+		\]
+		
+		\subsection*{Conversión a binario}
+				~~~~~~~\text{Parte entera: Dividimos sucesivamente por 2}
+		\begin{center}
+			\begin{Verbatim}[formatcom=\centering]
+				53 / 2 = 26, residuo 1
+				26 / 2 = 13, residuo 0
+				13 / 2 = 6,  residuo 1
+				6  / 2 = 3,  residuo 0
+				3  / 2 = 1,  residuo 1
+				1  / 2 = 0,  residuo 1
+				
+				Lectura inversa: 110101
+			\end{Verbatim}
+		\end{center}
+ 
+		
+		~~~~~~~~~\text{Parte decimal: Multiplicamos sucesivamente por 2}
+		
+		\begin{center}
+			\begin{Verbatim}
+			bit1: 0.28740 * 2 = 0.57480 → 0 
+			bit2: 0.57480 * 2 = 1.14960 → 1 
+			bit3: 0.14960 * 2 = 0.29920 → 0 
+			bit4: 0.29920 * 2 = 0.59840 → 0 
+			bit5: 0.59840 * 2 = 1.19680 → 1 
+			bit6: 0.19680 * 2 = 0.39360 → 0 
+			bit7: 0.39360 * 2 = 0.78720 → 0 
+			bit8: 0.78720 * 2 = 1.57440 → 1 
+			bit9: 0.57440 * 2 = 1.14880 → 1 
+			bit10: 0.14880 * 2 = 0.29760 → 0 
+			bit11: 0.29760 * 2 = 0.59520 → 0 
+			bit12: 0.59520 * 2 = 1.19040 → 1 
+			bit13: 0.19040 * 2 = 0.38080 → 0 
+			bit14: 0.38080 * 2 = 0.76160 → 0 
+			bit15: 0.76160 * 2 = 1.52320 → 1 
+			bit16: 0.52320 * 2 = 1.04640 → 1 
+			bit17: 0.04640 * 2 = 0.09280 → 0 
+			bit18: 0.09280 * 2 = 0.18560 → 0 
+			bit19: 0.18560 * 2 = 0.37120 → 0 
+			bit20: 0.37120 * 2 = 0.74240 → 0 
+			bit21: 0.74240 * 2 = 1.48480 → 1 
+			bit22: 0.48480 * 2 = 0.96960 → 0 
+			bit23: 0.96960 * 2 = 1.93920 → 1 
+			bit24: 0.93920 * 2 = 1.87840 → 1 
+			bit25: 0.87840 * 2 = 1.75680 → 1 
+			bit26: 0.75680 * 2 = 1.51360 → 1 
+			bit27: 0.51360 * 2 = 1.02720 → 1 
+			bit28: 0.02720 * 2 = 0.05440 → 0 
+			bit29: 0.05440 * 2 = 0.10880 → 0 
+			bit30: 0.10880 * 2 = 0.21760 → 0 
+			bit31: 0.21760 * 2 = 0.43520 → 0 
+			bit32: 0.43520 * 2 = 0.87040 → 0 
+			bit33: 0.87040 * 2 = 1.74080 → 1 
+			bit34: 0.74080 * 2 = 1.48160 → 1 	
+			\end{Verbatim}
+		\end{center}
+		
+		Resultado binario: 
+		\[
+		53.2874_{10} \approx 110101.01001001100100110000101
+		\]
+		
+		\subsection*{Determinación del exponente}
+		
+		Se debe aplicar el sesgo de 127 moviendo 5 lugares a la izquierda hasta el primer 1
+		\vspace{-0.5em}
+		\[
+		\text{Exponente real} = 5 \quad \Rightarrow \quad \text{Exponente IEEE} = 5 + 127 = 132
+		\]
+		\vspace{-0.5em}
+		\[
+		132_{10} = 10000100_2
+		\]
+		
+		\subsection*{Mantisa (23 bits)}
+		
+		Se toma lo que sigue después del primer 1 en la forma normalizada:
+		\vspace{-0.5em}
+		\[
+		\text{Mantisa: } \underline{1}.1010101001001... \Rightarrow 10101010010011001001100
+		\]
+		
+		\subsection*{Resultado IEEE 754 (formato 32 bits)}
+		
+		\[
+		\text{IEEE 754:} \quad 
+		\boxed{0} \quad \boxed{10000100} \quad \boxed{10101010010011001001100}
+		\]
+		
+		Separado en grupos de 4 bits:
+		\vspace{-0.5em}
+		\[
+		\texttt{0100\ 0010\ 0101\ 0101\ 0010\ 0110\ 0100\ 1100}
+		\]
+		
+		---	
+	\end{center}
+	%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+		\begin{center}	
+		\colorbox{yellow}{{\textbf{c.} $291.072$}}
+		
+		\subsection*{Bit de signo}
+		
+		\[
+		\text{El número es positivo} \Rightarrow \text{bit de signo = } \boxed{0}
+		\]
+		
+		\subsection*{Conversión a binario}
+		~~~~~~~\text{Parte entera: Dividimos sucesivamente por 2}
+		\begin{center}
+			\begin{Verbatim}[formatcom=\centering]
+				291 / 2 = 145, residuo 1
+				145 / 2 =  72, residuo 1
+				 72 / 2 =  36, residuo 0
+				 36 / 2 =  18, residuo 0
+				 18 / 2 =   9, residuo 0
+				  9 / 2 =   4, residuo 1
+				  4 / 2 =   2, residuo 0
+				  2 / 2 =   1, residuo 0
+				  1               		
+				Lectura inversa: 100100011
+			\end{Verbatim}
+		\end{center}
+		
+		
+		~~~~~~~~~\text{Parte decimal: Multiplicamos sucesivamente por 2}
+		
+		\begin{center}
+			\begin{Verbatim}
+				0.07200 * 2 = 0.14400 → 0 
+				0.14400 * 2 = 0.28800 → 0 
+				0.28800 * 2 = 0.57600 → 0 
+				0.57600 * 2 = 1.15200 → 1 
+				0.15200 * 2 = 0.30400 → 0 
+				0.30400 * 2 = 0.60800 → 0 
+				0.60800 * 2 = 1.21600 → 1 
+				0.21600 * 2 = 0.43200 → 0 
+				0.43200 * 2 = 0.86400 → 0 
+				0.86400 * 2 = 1.72800 → 1 
+				0.72800 * 2 = 1.45600 → 1 
+				0.45600 * 2 = 0.91200 → 0 
+				0.91200 * 2 = 1.82400 → 1 
+				0.82400 * 2 = 1.64800 → 1 
+				0.64800 * 2 = 1.29600 → 1 
+				0.29600 * 2 = 0.59200 → 0 
+				0.59200 * 2 = 1.18400 → 1 
+				0.18400 * 2 = 0.36800 → 0 
+				0.36800 * 2 = 0.73600 → 0 
+				0.73600 * 2 = 1.47200 → 1 
+				0.47200 * 2 = 0.94400 → 0 
+				0.94400 * 2 = 1.88800 → 1 
+				0.88800 * 2 = 1.77600 → 1 
+				0.77600 * 2 = 1.55200 → 1 
+				0.55200 * 2 = 1.10400 → 1 
+				0.10400 * 2 = 0.20800 → 0 
+				0.20800 * 2 = 0.41600 → 0 
+				0.41600 * 2 = 0.83200 → 0 
+				0.83200 * 2 = 1.66400 → 1 
+				0.66400 * 2 = 1.32800 → 1 
+				0.32800 * 2 = 0.65600 → 0 
+				0.65600 * 2 = 1.31200 → 1 
+				0.31200 * 2 = 0.62400 → 0 
+				0.62400 * 2 = 1.24800 → 1 
+				0.24800 * 2 = 0.49600 → 0  	
+			\end{Verbatim}
+		\end{center}
+		
+		Resultado binario: 
+		\[
+		53.2874_{10} \approx 100100011.000100100110111010010111100011010
+		\]
+		
+		\subsection*{Determinación del exponente}
+		
+		Se debe aplicar el sesgo de 127 moviendo 8 lugares a la izquierda hasta el primer 1
+		\vspace{-0.5em}
+		\[
+		\text{Exponente real} = 8 \quad \Rightarrow \quad \text{Exponente IEEE} = 8 + 127 = 135
+		\]
+		\vspace{-0.5em}
+		\[
+		135_{10} = 10000111_2
+		\]
+		
+		\subsection*{Mantisa (23 bits)}
+		
+		Se toma lo que sigue después del primer 1 en la forma normalizada:
+		\vspace{-0.5em}
+		\[
+		\text{Mantisa: } \underline{1}.00100011000100... \Rightarrow 00100011000100100110111
+		\]
+		
+		\subsection*{Resultado IEEE 754 (formato 32 bits)}
+		
+		\[
+		\text{IEEE 754:} \quad 
+		\boxed{0} \quad \boxed{10000111} \quad \boxed{00100011000100100110111}
+		\]
+		
+		Separado en grupos de 4 bits:
+		\vspace{-0.5em}
+		\[
+		\texttt{0100\ 0011\ 1001\ 0001\ 1000\ 1001\ 0011\ 0111}
+		\]
+
+		---	
+	\end{center}
+	%ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+		\begin{center}	
+		\colorbox{yellow}{{\textbf{e.} $-6.2265625$}}
+		
+		\subsection*{Bit de signo}
+		
+		\[
+		\text{El número es negativo} \Rightarrow \text{bit de signo = } \boxed{1}
+		\]
+		
+		\subsection*{Conversión a binario}
+		
+		
+		~~~~~~~~~~~~~~~~~~~~~~~~~\text{Parte entera:} 
+		\begin{center}
+			\begin{Verbatim}[formatcom=\centering]
+				6 / 2 = 3, residuo 0
+				3 / 2 = 1, residuo 1
+				1 
+				Lectura inversa: 110
+			\end{Verbatim}
+		\end{center}
+		
+		\text{Parte decimal: Multiplicamos sucesivamente por 2}
+		
+		\begin{center}
+			\begin{Verbatim}
+				bit1: 0.22656 * 2 = 0.45312 0 
+				bit2: 0.45312 * 2 = 0.90625 0 
+				bit3: 0.90625 * 2 = 1.81250 1 
+				bit4: 0.81250 * 2 = 1.62500 1 
+				bit5: 0.62500 * 2 = 1.25000 1 
+				bit6: 0.25000 * 2 = 0.50000 0 
+				bit7: 0.50000 * 2 = 1.00000 1 
+				bit8: 0.00000 * 2 = 0.00000 0 				
+			\end{Verbatim}
+		\end{center}
+		
+		Resultado binario: 
+		\[
+		-6.2265625_{10} = -110.00111010_2
+		\]
+		
+		\subsection*{Determinación del exponente}
+		
+		Se debe aplicar el sesgo de 127 moviendo 2 lugares a la izquierda hasta el primer 1
+		\vspace{-0.5em}
+		\[
+		\text{Exponente real} = 2 \quad \Rightarrow \quad \text{Exponente IEEE} = 2 + 127 = 129
+		\]
+		\vspace{-0.5em}
+		\[
+		114_{10} = 10000001_2
+		\]
+		
+		\subsection*{Mantisa (23 bits)}
+		
+		Se toma lo que sigue después del primer 1 en la forma normalizada:
+		\vspace{-0.5em}
+		\[
+		\text{Mantisa: } \underline{1}.0100111010... \Rightarrow 01001110100000000000000
+		\]
+		
+		\subsection*{Resultado IEEE 754 (formato 32 bits)}
+		
+		\[
+		\text{IEEE 754:} \quad 
+		\boxed{1} \quad \boxed{10000001} \quad \boxed{01001110100000000000000}
+		\]
+		
+		Separado en grupos de 4 bits:
+		\vspace{-0.5em}
+		\[
+		\texttt{1100\ 0000\ 1100\ 0111\ 0100\ 0000\ 0000\ 0000}
+		\]
+
+		---	
+	\end{center}		
+%eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+		\begin{center}	
+			\colorbox{yellow}{{\textbf{e.} $14$}}
+			
+			\subsection*{Bit de signo}
+			
+			\[
+			\text{El número es positivo} \Rightarrow \text{bit de signo = } \boxed{0}
+			\]
+			
+			\subsection*{Conversión a binario}
+			~~~~~~~\text{Parte entera: Dividimos sucesivamente por 2}
+			\begin{center}
+				\begin{Verbatim}[formatcom=\centering]
+					14 / 2 = 7, residuo 0
+					 7 / 2 = 3, residuo 1
+					 3 / 2 = 1, residuo 1
+					 1
+					Lectura inversa: 1110
+				\end{Verbatim}
+			\end{center}
+			
+			
+			Resultado binario: 
+			\[
+			14_{10} = 1110_2
+			\]
+			
+			\subsection*{Determinación del exponente}
+			
+			Se debe aplicar el sesgo de 127 moviendo 3 lugares a la izquierda hasta el primer 1
+			\vspace{-0.5em}
+			\[
+			\text{Exponente real} = 3 \quad \Rightarrow \quad \text{Exponente IEEE} = 3 + 127 = 130
+			\]
+			\vspace{-0.5em}
+			\[
+			130_{10} = 10000010_2
+			\]
+			
+			\subsection*{Mantisa (23 bits)}
+			
+			Se toma lo que sigue después del primer 1 en la forma normalizada:
+			\vspace{-0.5em}
+			\[
+			\text{Mantisa: } \underline{1}.11000000000000000000000
+			\]
+			
+			\subsection*{Resultado IEEE 754 (formato 32 bits)}
+			
+			\[
+			\text{IEEE 754:} \quad 
+			\boxed{0} \quad \boxed{10000010} \quad \boxed{11000000000000000000000}
+			\]
+			
+			Separado en grupos de 4 bits:
+			\vspace{-0.5em}
+			\[
+			\texttt{0100\ 0001\ 0110\ 0000\ 0000\ 0000\ 0000\ 0000}
+			\]
+			
+			---	
+		\end{center}
+	
+\end{document}
