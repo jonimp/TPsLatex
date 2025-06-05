@@ -10,6 +10,8 @@
 \usepackage{xparse}
 \usepackage{enumitem}
 \usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
 \usepackage[a4paper, top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 
 \pagestyle{fancy}
@@ -504,5 +506,643 @@
 			
 			---	
 		\end{center}
+	%fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+	\begin{center}	
+		\colorbox{yellow}{{\textbf{f.} $3.5$}}
+		
+		\subsection*{Bit de signo}
+		
+		\[
+		\text{El número es positivo} \Rightarrow \text{bit de signo = } \boxed{0}
+		\]
+		
+		\subsection*{Conversión a binario}
+		~~~~~~~\text{Parte entera: Dividimos sucesivamente por 2}
+		\begin{center}
+			\begin{Verbatim}[formatcom=\centering]
+				3  / 2 = 1,  residuo 1
+				1  / 2 = 0,  residuo 1
+				
+				Lectura inversa: 11
+			\end{Verbatim}
+		\end{center}
+		
+		
+		~~~~~~~~~\text{Parte decimal: Multiplicamos sucesivamente por 2}
+		
+		\begin{center}
+			\begin{Verbatim}
+				0.5 * 2 = 1.00000 → 1 
+				0.0 * 2 = 0.00000 → 0 
+			\end{Verbatim}
+		\end{center}
+		
+		Resultado binario: 
+		\[
+		3.5_{10} \approx 11.10
+		\]
+		
+		\subsection*{Determinación del exponente}
+		
+		Se debe aplicar el sesgo de 127 moviendo 1 lugar a la izquierda hasta el primer 1
+		\vspace{-0.5em}
+		\[
+		\text{Exponente real} = 1 \quad \Rightarrow \quad \text{Exponente IEEE} = 1 + 127 = 128
+		\]
+		\vspace{-0.5em}
+		\[
+		128_{10} = 10000000_2
+		\]
+		
+		\subsection*{Mantisa (23 bits)}
+		
+		Se toma lo que sigue después del primer 1 en la forma normalizada:
+		\vspace{-0.5em}
+		\[
+		\text{Mantisa: } \underline{1}.1100000000... \Rightarrow 11000000000000000000000
+		\]
+		
+		\subsection*{Resultado IEEE 754 (formato 32 bits)}
+		
+		\[
+		\text{IEEE 754:} \quad 
+		\boxed{0} \quad \boxed{10000000} \quad \boxed{11000000000000000000000}
+		\]
+		
+		Separado en grupos de 4 bits:
+		\vspace{-0.5em}
+		\[
+		\texttt{0100\ 0000\ 0110\ 0000\ 0000\ 0000\ 0000\ 0000}
+		\]
+		
+		---	
+	\end{center}
+%gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+			\begin{center}	
+			\colorbox{yellow}{{\textbf{g.} $-12.5$}}
+			
+			\subsection*{Bit de signo}
+			
+			\[
+			\text{El número es negativo} \Rightarrow \text{bit de signo = } \boxed{1}
+			\]
+			
+			\subsection*{Conversión a binario}
+			
+			
+			~~~~~~~~~~~~~~~~~~~~~~~~~\text{Parte entera:} 
+			\begin{center}
+				\begin{Verbatim}[formatcom=\centering]
+					12 / 2 = 6, residuo 0
+					 6 / 2 = 3, residuo 0
+					 3 / 2 = 1, residuo 1
+					 1 
+					Lectura inversa: 1100
+				\end{Verbatim}
+			\end{center}
+			
+			\text{Parte decimal: Multiplicamos sucesivamente por 2}
+			
+			\begin{center}
+				\begin{Verbatim}
+					0.5 * 2 = 1.00000 → 1 
+					0.0 * 2 = 0.00000 → 0 
+				\end{Verbatim}
+			\end{center}
+			
+			Resultado binario: 
+			\[
+			-12.5_{10} = -1100.10_2
+			\]
+			
+			\subsection*{Determinación del exponente}
+			
+			Se debe aplicar el sesgo de 127 moviendo 3 lugares a la izquierda hasta el primer 1
+			\vspace{-0.5em}
+			\[
+			\text{Exponente real} = 3 \quad \Rightarrow \quad \text{Exponente IEEE} = 3 + 127 = 130
+			\]
+			\vspace{-0.5em}
+			\[
+			130_{10} = 10000010_2
+			\]
+			
+			\subsection*{Mantisa (23 bits)}
+			
+			Se toma lo que sigue después del primer 1 en la forma normalizada:
+			\vspace{-0.5em}
+			\[
+			\text{Mantisa: } \underline{1}.10010000000... \Rightarrow 10010000000000000000000
+			\]
+			
+			\subsection*{Resultado IEEE 754 (formato 32 bits)}
+			
+			\[
+			\text{IEEE 754:} \quad 
+			\boxed{1} \quad \boxed{10000010} \quad \boxed{10010000000000000000000}
+			\]
+
+			Separado en grupos de 4 bits:
+			\vspace{-0.5em}
+			\[
+			\texttt{1100\ 0001\ 0100\ 1000\ 0000\ 0000\ 0000\ 0000}
+			\]
+			
+			---	
+		\end{center}
+	%hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+	\begin{center}	
+		\colorbox{yellow}{{\textbf{h.} $10.25$}}
+		
+		\subsection*{Bit de signo}
+		
+		\[
+		\text{El número es positivo} \Rightarrow \text{bit de signo = } \boxed{0}
+		\]
+		
+		\subsection*{Conversión a binario}
+		~~~~~~~\text{Parte entera: Dividimos sucesivamente por 2}
+		\begin{center}
+			\begin{Verbatim}[formatcom=\centering]
+				10 / 2 = 5, residuo 0
+				 5 / 2 = 2, residuo 1
+				 2 / 2 = 1, residuo 0
+				 1
+				Lectura inversa: 1010
+			\end{Verbatim}
+		\end{center}
+		
+		
+		~~~~~~~~~\text{Parte decimal: Multiplicamos sucesivamente por 2}
+		
+		\begin{center}
+			\begin{Verbatim}
+				0.25 * 2 = 0.50000 → 0 
+				0.50 * 2 = 1.00000 → 1
+				0.00 * 2 = 0.00000 → 0
+			\end{Verbatim}
+		\end{center}
+		
+		Resultado binario: 
+		\[
+		3.5_{10} \approx 1010.010
+		\]
+		
+		\subsection*{Determinación del exponente}
+		
+		Se debe aplicar el sesgo de 127 moviendo 3 lugares a la izquierda hasta el primer 1
+		\vspace{-0.5em}
+		\[
+		\text{Exponente real} = 3 \quad \Rightarrow \quad \text{Exponente IEEE} = 3 + 127 = 130
+		\]
+		\vspace{-0.5em}
+		\[
+		130_{10} = 10000010_2
+		\]
+		
+		\subsection*{Mantisa (23 bits)}
+		
+		Se toma lo que sigue después del primer 1 en la forma normalizada:
+		\vspace{-0.5em}
+		\[
+		\text{Mantisa: } \underline{1}.010010000000... \Rightarrow 01001000000000000000000
+		\]
+		
+		\subsection*{Resultado IEEE 754 (formato 32 bits)}
+		
+		\[
+		\text{IEEE 754:} \quad 
+		\boxed{0} \quad \boxed{10000010} \quad \boxed{01001000000000000000000}
+		\]
+		
+		Separado en grupos de 4 bits:
+		\vspace{-0.5em}
+		\[
+		\texttt{0100\ 0001\ 0010\ 0100\ 0000\ 0000\ 0000\ 0000}
+		\]
+
+		---	
+	\end{center}
+	%iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+		\begin{center}	
+		\colorbox{yellow}{{\textbf{i.} $-6.75$}}
+		
+		\subsection*{Bit de signo}
+		
+		\[
+		\text{El número es negativo} \Rightarrow \text{bit de signo = } \boxed{1}
+		\]
+		
+		\subsection*{Conversión a binario}
+		
+		
+		~~~~~~~~~~~~~~~~~~~~~~~~~\text{Parte entera:} 
+		\begin{center}
+			\begin{Verbatim}[formatcom=\centering]
+				6 / 2 = 3, residuo 0
+				3 / 2 = 1, residuo 1
+				1 
+				Lectura inversa: 110
+			\end{Verbatim}
+		\end{center}
+		
+		\text{Parte decimal: Multiplicamos sucesivamente por 2}
+		
+		\begin{center}
+			\begin{Verbatim}
+				0.75 * 2 = 1.50000 → 1 
+				0.50 * 2 = 1.00000 → 1
+				0.00 * 2 = 0.00000 → 0
+			\end{Verbatim}
+		\end{center}
+		
+		Resultado binario: 
+		\[
+		-6.75_{10} = -110.110_2
+		\]
+		
+		\subsection*{Determinación del exponente}
+		
+		Se debe aplicar el sesgo de 127 moviendo 2 lugares a la izquierda hasta el primer 1
+		\vspace{-0.5em}
+		\[
+		\text{Exponente real} = 2 \quad \Rightarrow \quad \text{Exponente IEEE} = 3 + 127 = 129
+		\]
+		\vspace{-0.5em}
+		\[
+		129_{10} = 10000001_2
+		\]
+		
+		\subsection*{Mantisa (23 bits)}
+		
+		Se toma lo que sigue después del primer 1 en la forma normalizada:
+		\vspace{-0.5em}
+		\[
+		\text{Mantisa: } \underline{1}.10110000000... \Rightarrow 10110000000000000000000
+		\]
+		
+		\subsection*{Resultado IEEE 754 (formato 32 bits)}
+		
+		\[
+		\text{IEEE 754:} \quad 
+		\boxed{1} \quad \boxed{10000001} \quad \boxed{10110000000000000000000}
+		\]
+		
+		Separado en grupos de 4 bits:
+		\vspace{-0.5em}
+		\[
+		\texttt{1100\ 0000\ 1101\ 1000\ 0000\ 0000\ 0000\ 0000}
+		\]
+
+		---	
+	\end{center}
+
+	2.Obtener el numero en decimal que esta representado en IEEE 754 de 32 bits:
+	\begin{enumerate}
+		\item 1100 0001 1001 1110 0000 0000 0000 0000
+		\item 0100 0000 0010 1001 0000 0000 0000 0000
+		\item 1100 0010 0001 0000 0000 0000 0000 0000
+		\item 1100 0000 1110 0010 0000 0000 0000 0000
+		\item 0100 0001 1011 1010 0000 0000 0000 0000
+		\item 1001 1010 1001 0101 0000 0000 0000 0000
+		\item 0100 0010 0101 0101 0000 0000 0000 0000
+		\item 1100 1000 0000 0011 0000 0000 0000 0000
+		\item 0100 0111 1111 0100 0000 0000 0000 0000
+	\end{enumerate}
+	\vspace{1em}
+	\begin{center}
+	\colorbox{yellow}{\textbf{a.} 1100 0001 1001 1110 0000 0000 0000 0000}
+
+	\subsection*{Separar campos}
+	
+	\begin{itemize}
+		\item \textbf{Bit de signo:} 1 (número negativo)
+		\item \textbf{Exponente:} $10000011_2$ → $131_{10}$
+		\item \textbf{Mantisa:} $00111100000000000000000_2$ 
+		\[
+		0\times2^{-1} + 0\times2^{-2} + 1\times2^{-3} + 1\times2^{-4} + 1\times2^{-5} + 1\times2^{-6} = 0.234375_{10}
+		\]
+	\end{itemize}
+	
+	\subsection*{Calcular exponente real}
+	
+	\[
+	\text{Exponente} = 131 - 127 = 4
+	\]
+	
+
+	
+	\subsection*{Reconstrucción del número binario}	
+	\[
+	(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+	\]
+	\[
+	(-1)^1 \times 2^4 \times 1.234375 = -19.75
+	\]
+	\vspace{1em}
+	\[
+	\boxed{-19.75}
+	\]
+	
+	---
+	\end{center}
+
+		\begin{center}
+		\colorbox{yellow}{\textbf{b.} 0100 0000 0010 1001 0000 0000 0000 0000}
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 0 (número positivo)
+			\item \textbf{Exponente:} $10000000_2$ → $128_{10}$
+			\item \textbf{Mantisa:} $01010010000000000000000_2$ 
+			\[
+			0\times2^{-1} + 1\times2^{-2} + 0\times2^{-3} + 1\times2^{-4} + 0\times2^{-5} + 0\times2^{-6} + 1\times2^{-7} = 0.3203125_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 128 - 127 = 1
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^0 \times 2^1 \times 1.3203125 = 2.640625
+		\]
+		\vspace{1em}
+		\[
+		\boxed{2.640625}
+		\]
+		
+		---
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{\textbf{c.} 1100 0010 0001 0000 0000 0000 0000 0000}
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 1 (número negativo)
+			\item \textbf{Exponente:} $10000100_2$ → $132_{10}$
+			\item \textbf{Mantisa:} $00100000000000000000000_2$ 
+			\[
+			0\times2^{-1} + 0\times2^{-2} + 1\times2^{-3} = 0.125_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 132 - 127 = 5
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^1 \times 2^5 \times 1.125 = -36
+		\]
+		\vspace{1em}
+		\[
+		\boxed{-36}
+		\]
+		
+		---
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{\textbf{d.} 1100 0000 1110 0010 0000 0000 0000 0000}
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 1 (número negativo)
+			\item \textbf{Exponente:} $10000001_2$ → $129_{10}$
+			\item \textbf{Mantisa:} $11000100000000000000000_2$ 
+			\[
+			1\times2^{-1} + 1\times2^{-2} + 0\times2^{-3} + 0\times2^{-4} + 0\times2^{-5} + 1\times2^{-6} = 0.765625_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 129 - 127 = 2
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^1 \times 2^2 \times 1.765625 = -7.0625
+		\]
+		\vspace{1em}
+		\[
+		\boxed{-7.0625}
+		\]
+		
+		---
+	\end{center}
+
+	
+
+	\begin{center}
+	\colorbox{yellow}{\textbf{e.} 0100 0001 1011 1010 0000 0000 0000 0000}
+	
+	\subsection*{Separar campos}
+	
+	\begin{itemize}
+		\item \textbf{Bit de signo:} 0 (número positivo)
+		\item \textbf{Exponente:} $10000011_2$ → $131_{10}$
+		\item \textbf{Mantisa:} $01110100000000000000000_2$ 
+		\[
+		0\times2^{-1} + 1\times2^{-2} + 1\times2^{-3} + 1\times2^{-4} + 0\times2^{-5} + 1\times2^{-6} = 0.453125_{10}
+		\]
+	\end{itemize}
+	
+	\subsection*{Calcular exponente real}
+	
+	\[
+	\text{Exponente} = 131 - 127 = 4
+	\]
+	
+	
+	
+	\subsection*{Reconstrucción del número binario}	
+	\[
+	(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+	\]
+	\[
+	(-1)^0 \times 2^4 \times 1.453125 = 23.25
+	\]
+	\vspace{1em}
+	\[
+	\boxed{23.25}
+	\]
+	
+	---
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{\textbf{f.} 1001 1010 1001 0101 0000 0000 0000 0000}
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 1 (número negativo)
+			\item \textbf{Exponente:} $00110101_2$ → $53_{10}$
+			\item \textbf{Mantisa:} $00101010000000000000000_2$ 
+			\[
+			0\times2^{-1} + 0\times2^{-2} + 1\times2^{-3} + 0\times2^{-4} + 1\times2^{-5} + 0\times2^{-6} + 1\times2^{-7} = 0.1640625_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 53 - 127 = -74
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^1 \times 2^-74 \times 1.1640625 = -6.162495564*10^{-23}
+		\]
+		\vspace{1em}
+		\[
+		\boxed{-6.162495564*10^{-23}}
+		\]
+		
+		---
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{\textbf{g.} 0100 0010 0101 0101 0000 0000 0000 0000}
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 0 (número positivo)
+			\item \textbf{Exponente:} $10000100_2$ → $132_{10}$
+			\item \textbf{Mantisa:} $10101010000000000000000_2$ 
+			\[
+			1\times2^{-1} + 0\times2^{-2} + 1\times2^{-3} + 0\times2^{-4} + 1\times2^{-5} + 0\times2^{-6} + 1\times2^{-7} = 0.6640625_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 132 - 127 = 5
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^0 \times 2^5 \times 1.6640625 = 53.25
+		\]
+		\vspace{1em}
+		\[
+		\boxed{53.25}
+		\]
+		
+		---
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{\textbf{h.} 1100 1000 0000 0011 0000 0000 0000 0000}
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 1 (número negativo)
+			\item \textbf{Exponente:} $10010000_2$ → $144_{10}$
+			\item \textbf{Mantisa:} $00000110000000000000000_2$ 
+			\[
+			0\times2^{-1} + 0\times2^{-2} + 0\times2^{-3} + 0\times2^{-4} + 0\times2^{-5} + 1\times2^{-6} + 1\times2^{-7} = 0.0234375_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 144 - 127 = 17
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^1 \times 2^17 \times 1.0234375 = -134144
+		\]
+		\vspace{1em}
+		\[
+		\boxed{-134144}
+		\]
+		
+		---
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{\textbf{i.} 0100 0111 1111 0100 0000 0000 0000 0000}
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 1 (número negativo)
+			\item \textbf{Exponente:} $10001111_2$ → $143_{10}$
+			\item \textbf{Mantisa:} $11101000000000000000000_2$ 
+			\[
+			1\times2^{-1} + 1\times2^{-2} + 1\times2^{-3} + 0\times2^{-4} + 1\times2^{-5} = 0.90625_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 143 - 127 = 16
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^1 \times 2^16 \times 1.90625 = -124928
+		\]
+		\vspace{1em}
+		\[
+		\boxed{-124928}
+		\]
+		
+		---
+	\end{center}
 	
 \end{document}
