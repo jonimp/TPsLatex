@@ -4,6 +4,7 @@
 \usepackage{listings}
 \usepackage{fancyhdr}
 \usepackage{fancyvrb}
+\setlength{\headheight}{15pt}
 \usepackage{caption}
 \usepackage{graphicx}
 \usepackage{xcolor}
@@ -1145,4 +1146,363 @@
 		---
 	\end{center}
 	
+	3.Indicar el valor decimal de los siguientes números hexadecimales que siguen
+	el formato de coma flotante IEEE 754.
+	\begin{enumerate}
+		\item FF800000
+		\item 7F804000
+		\item C7B00000
+		\item 0A180000
+		\item 40E00000
+		\item BF400000
+		\item 804B0000
+		\item 42378000
+		\item B7890000
+	\end{enumerate}	
+
+
+
+	
+	\vspace{1em}
+	%AAAAAAAAAAAAAAAAAAAAAA
+	\begin{center}
+	\colorbox{yellow}{\textbf{a.} FF800000}
+	\subsection*{Conversión a binario (32 bits)}
+	Cada dígito hexadecimal equivale a 4 bits:
+	
+	\[
+		\mathtt{
+		\underset{\text{F}}{\boxed{\mathtt{1111}}}
+		\underset{\text{F}}{\boxed{\mathtt{1111}}}
+		\underset{\text{8}}{\boxed{\mathtt{1000}}}
+		\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		}	
+	\]
+	
+	\subsection*{Separar campos}
+	
+	\begin{itemize}
+		\item \textbf{Bit de signo:} 1 (número negativo)
+		\item \textbf{Exponente:} $11111111_2$ → $255_{10}$
+		\item \textbf{Mantisa:} $00000000000000000000000_2$ 
+	\end{itemize}
+	
+	\subsection*{Interpretación del número}
+	
+	- Exponente = 255 → valor reservado en IEEE 754\newline
+	- Si la mantisa != 0 → representa un \textbf{NaN (Not a Number)}\newline
+	- Si la mantisa = 0 → representa un \textbf{infinito positivo/negativo}
+	
+	\[
+	\Rightarrow \text{Este número representa: } \boxed{-\infty}
+	\]
+	
+	---
+	\end{center}
+	%BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+	\begin{center}
+		\colorbox{yellow}{\textbf{b.} 7F804000}
+		\subsection*{Conversión a binario (32 bits)}
+		Cada dígito hexadecimal equivale a 4 bits:
+		
+		\[
+		\mathtt{
+			\underset{\text{7}}{\boxed{\mathtt{0111}}}
+			\underset{\text{F}}{\boxed{\mathtt{1111}}}
+			\underset{\text{8}}{\boxed{\mathtt{1000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{4}}{\boxed{\mathtt{0100}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		}	
+		\]
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 1 (número negativo)
+			\item \textbf{Exponente:} $11111111_2$ → $255_{10}$
+			\item \textbf{Mantisa:} $00000000100000000000000_2$ 
+			\[
+			0\times2^{-1} + 0\times2^{-2} + 0\times2^{-3} + 0\times2^{-4} + 0\times2^{-5} + 0\times2^{-6} + 0\times2^{-7} + 0\times2^{-8} + 0\times2^{-9}= 0.001953125_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Interpretación del número}
+		
+		- Exponente = 255 → valor reservado en IEEE 754\newline
+		- Si la mantisa != 0 → representa un \textbf{NaN (Not a Number)}\newline
+		- Si la mantisa = 0 → representa un \textbf{infinito positivo/negativo}
+		
+		\[
+		\Rightarrow \text{Este número representa: } \boxed{NaN}
+		\]
+		
+		---
+	\end{center}
+	%CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+	\begin{center}
+		\colorbox{yellow}{\textbf{c.} C7B00000}
+		\subsection*{Conversión a binario (32 bits)}
+		Cada dígito hexadecimal equivale a 4 bits:
+		
+		\[
+		\mathtt{
+			\underset{\text{C}}{\boxed{\mathtt{1100}}}
+			\underset{\text{7}}{\boxed{\mathtt{0111}}}
+			\underset{\text{B}}{\boxed{\mathtt{1011}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		}	
+		\]
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 1 (número negativo)
+			\item \textbf{Exponente:} $10001111_2$ → $15_{10}$
+			\item \textbf{Mantisa:} $01100000000000000000000_2$ 
+			\[
+			0\times2^{-1} + 1\times2^{-2} + 1\times2^{-3} = 0.375_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 143 - 127 = 16
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^1 \times 2^16 \times 1.375 = -90112
+		\]
+		\vspace{1em}
+		\[
+		\boxed{-90112}
+		\]
+		
+		---
+	\end{center}
+	%DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+	\begin{center}
+		\colorbox{yellow}{\textbf{d.} 0A180000}
+		\subsection*{Conversión a binario (32 bits)}
+		Cada dígito hexadecimal equivale a 4 bits:
+		
+		\[
+		\mathtt{
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{A}}{\boxed{\mathtt{1010}}}
+			\underset{\text{1}}{\boxed{\mathtt{0001}}}
+			\underset{\text{8}}{\boxed{\mathtt{1000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		}	
+		\]
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 0 (número positivo)
+			\item \textbf{Exponente:} $00010100_2$ → $20_{10}$
+			\item \textbf{Mantisa:} $00110000000000000000000_2$ 
+			\[
+			0\times2^{-1} + 0\times2^{-2} + 1\times2^{-3} + 1\times2^{-4} = 0.1875_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 20 - 127 = -107
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^0 \times 2^-107 \times 1.1875 = 7.318533789*10^{-33}
+		\]
+		\vspace{1em}
+		\[
+		\boxed{7.318533789*10^{-33}}
+		\]
+		
+		---
+	\end{center}
+	%EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	\begin{center}
+		\colorbox{yellow}{\textbf{e.} 40E00000}
+		\subsection*{Conversión a binario (32 bits)}
+		Cada dígito hexadecimal equivale a 4 bits:
+		
+		\[
+		\mathtt{
+			\underset{\text{4}}{\boxed{\mathtt{0100}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{E}}{\boxed{\mathtt{1110}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		}	
+		\]
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 0 (número positivo)
+			\item \textbf{Exponente:} $10000001_2$ → $129_{10}$
+			\item \textbf{Mantisa:} $11000000000000000000000_2$ 
+			\[
+			1\times2^{-1} + 1\times2^{-2} = 0.75_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 129 - 127 = 2
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^0 \times 2^2 \times 1.75 = 7
+		\]
+		\vspace{1em}
+		\[
+		\boxed{7}
+		\]
+		
+		---
+	\end{center}
+	%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+	\begin{center}
+		\colorbox{yellow}{\textbf{f.} BF400000}
+		\subsection*{Conversión a binario (32 bits)}
+		Cada dígito hexadecimal equivale a 4 bits:
+		
+		\[
+		\mathtt{
+			\underset{\text{B}}{\boxed{\mathtt{0111}}}
+			\underset{\text{F}}{\boxed{\mathtt{1111}}}
+			\underset{\text{4}}{\boxed{\mathtt{0100}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		}	
+		\]
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 0 (número positivo)
+			\item \textbf{Exponente:} $11111110_2$ → $254_{10}$
+			\item \textbf{Mantisa:} $10000000000000000000000_2$ 
+			\[
+			1\times2^{-1}  = 0.5_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 254 - 127 = 127
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^0 \times 2^127 \times 1.5 = 2.552117752*10^{38}
+		\]
+		\vspace{1em}
+		\[
+		\boxed{2.552117752*10^{38}}
+		\]
+		
+		---
+	\end{center}
+	%GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+	\begin{center}
+		\colorbox{yellow}{\textbf{g.} 804B0000}
+		\subsection*{Conversión a binario (32 bits)}
+		Cada dígito hexadecimal equivale a 4 bits:
+		
+		\[
+		\mathtt{
+			\underset{\text{8}}{\boxed{\mathtt{1000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{4}}{\boxed{\mathtt{0100}}}
+			\underset{\text{B}}{\boxed{\mathtt{0111}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		}	
+		\]
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 1 (número negativo)
+			\item \textbf{Exponente:} $00000000_2$ → $0_{10}$
+			\item \textbf{Mantisa:} $10001110000000000000000_2$ 
+			\[
+			1\times2^{-1} + 0\times2^{-2} + 0\times2^{-3} + 0\times2^{-4} + 1\times2^{-5} + 1\times2^{-6} + 1\times2^{-7} = 0.5546875_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 0 - 127 = -127
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^1 \times 2^-127 \times 1.5546875 = -9.137631868*10^{-39}
+		\]
+		\vspace{1em}
+		\[
+		\boxed{-9.137631868*10^{-39}}
+		\]
+		
+		---
+	\end{center}
 \end{document}
