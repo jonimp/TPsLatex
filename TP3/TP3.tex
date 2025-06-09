@@ -1476,7 +1476,7 @@
 		
 		\begin{itemize}
 			\item \textbf{Bit de signo:} 1 (número negativo)
-			\item \textbf{Exponente:} $00000000_2$ → $0_{10}$
+			\item \textbf{Exponente:} $00000000_2$ → como todos los bits son cero, se trata de un número subnormal, y por lo tanto el exponente real es -126 (no se aplica la resta con el sesgo 127 en este caso).
 			\item \textbf{Mantisa:} $10001110000000000000000_2$ 
 			\[
 			1\times2^{-1} + 0\times2^{-2} + 0\times2^{-3} + 0\times2^{-4} + 1\times2^{-5} + 1\times2^{-6} + 1\times2^{-7} = 0.5546875_{10}
@@ -1486,7 +1486,60 @@
 		\subsection*{Calcular exponente real}
 		
 		\[
-		\text{Exponente} = 0 - 127 = -127
+		\text{Exponente} = -126
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}
+		La mantisa se interpreta como 0.fracción binaria, sin anteponer un 1 cuando el exponente es 0 (caso subnormal).	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 0.\text{mantisa}
+		\]
+		\[
+		(-1)^1 \times 2^-126 \times 0.5546875 = -6.520320227*10^{-39}
+		\]
+		\vspace{1em}
+		\[
+		\boxed{-6.520320227*10^{-39}}
+		\]
+		
+		---
+	\end{center}
+	%HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh
+	\begin{center}
+		\colorbox{yellow}{\textbf{h.} 42378000}
+		\subsection*{Conversión a binario (32 bits)}
+		Cada dígito hexadecimal equivale a 4 bits:
+		
+		\[
+		\mathtt{
+			\underset{\text{4}}{\boxed{\mathtt{0100}}}
+			\underset{\text{2}}{\boxed{\mathtt{0010}}}
+			\underset{\text{3}}{\boxed{\mathtt{0011}}}
+			\underset{\text{7}}{\boxed{\mathtt{0111}}}
+			\underset{\text{8}}{\boxed{\mathtt{1000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		}	
+		\]
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 0 (número positivo)
+			\item \textbf{Exponente:} $10000100_2$ → $132_{10}$
+			\item \textbf{Mantisa:} $01101111000000000000000_2$ 
+			\[
+			0\times2^{-1} + 1\times2^{-2} + 1\times2^{-3} + 0\times2^{-4} + 1\times2^{-5} + 1\times2^{-6} + 1\times2^{-7} + 1\times2^{-8}= 0.43359375_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 132 -127 = 5
 		\]
 		
 		
@@ -1496,13 +1549,1232 @@
 		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
 		\]
 		\[
-		(-1)^1 \times 2^-127 \times 1.5546875 = -9.137631868*10^{-39}
+		(-1)^0 \times 2^5 \times 1.43359375 = 45.875
 		\]
 		\vspace{1em}
 		\[
-		\boxed{-9.137631868*10^{-39}}
+		\boxed{45.875}
 		\]
 		
 		---
 	\end{center}
+	%IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+	\begin{center}
+		\colorbox{yellow}{\textbf{i.} B7890000}
+		\subsection*{Conversión a binario (32 bits)}
+		Cada dígito hexadecimal equivale a 4 bits:
+		
+		\[
+		\mathtt{
+			\underset{\text{B}}{\boxed{\mathtt{1011}}}
+			\underset{\text{7}}{\boxed{\mathtt{0111}}}
+			\underset{\text{8}}{\boxed{\mathtt{1000}}}
+			\underset{\text{9}}{\boxed{\mathtt{1001}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+			\underset{\text{0}}{\boxed{\mathtt{0000}}}
+		}	
+		\]
+		
+		\subsection*{Separar campos}
+		
+		\begin{itemize}
+			\item \textbf{Bit de signo:} 1 (número negativo)
+			\item \textbf{Exponente:} $01101111_2$ → $111_{10}$
+			\item \textbf{Mantisa:} $00010010000000000000000_2$ 
+			\[
+			0\times2^{-1} + 0\times2^{-2} + 0\times2^{-3} + 1\times2^{-4} + 0\times2^{-5} + 0\times2^{-6} + 1\times2^{-7} = 0.0703125_{10}
+			\]
+		\end{itemize}
+		
+		\subsection*{Calcular exponente real}
+		
+		\[
+		\text{Exponente} = 111 -127 = -16
+		\]
+		
+		
+		
+		\subsection*{Reconstrucción del número binario}	
+		\[
+		(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
+		\]
+		\[
+		(-1)^0 \times 2^-16 \times 1.0703125 = -0.000016331673
+		\]
+		\vspace{1em}
+		\[
+		\boxed{-0.000016331673}
+		\]
+		
+		---
+	\end{center}
+
+	4.Convertir los siguientes números binarios a sus equivalentes decimales:
+	\begin{enumerate}
+		\item 001100 
+		\item 000011 
+		\item 011100 
+		\item 111100 
+		\item 101010 
+		\item 111111 
+		\item 100001 
+		\item 111000 
+		\item 11110001111 
+		\item 11100,011 
+		\item 110011,10011 
+		\item 1010101010,1
+	\end{enumerate}
+	
+	\begin{center}
+	\colorbox{yellow}{{\textbf{a.} $001100$}}
+	\subsection*{Calculo mediante el teorema fundamental de la numeración}
+	\[
+	0\times2^{5} + 0\times2^{4} + 1\times2^{3} + 1\times2^{2} + 0\times2^{1} + 0\times2^{0}
+	\]
+	\boxed{12_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{b.} $000011$}}
+		\subsection*{Calculo mediante el teorema fundamental de la numeración}
+		\[
+		0\times2^{5} + 0\times2^{4} + 0\times2^{3} + 0\times2^{2} + 1\times2^{1} + 1\times2^{0}
+		\]
+		\boxed{3_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{c.} $011100$}}
+		\subsection*{Calculo mediante el teorema fundamental de la numeración}
+		\[
+		0\times2^{5} + 1\times2^{4} + 1\times2^{3} + 1\times2^{2} + 0\times2^{1} + 0\times2^{0}
+		\]
+		\boxed{28_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{d.} $111100$}}
+		\subsection*{Calculo mediante el teorema fundamental de la numeración}
+		\[
+		1\times2^{5} + 1\times2^{4} + 1\times2^{3} + 1\times2^{2} + 0\times2^{1} + 0\times2^{0}
+		\]
+		\boxed{60_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{e.} $101010$}}
+		\subsection*{Calculo mediante el teorema fundamental de la numeración}
+		\[
+		1\times2^{5} + 0\times2^{4} + 1\times2^{3} + 0\times2^{2} + 1\times2^{1} + 0\times2^{0}
+		\]
+		\boxed{42_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{f.} $111111$}}
+		\subsection*{Calculo mediante el teorema fundamental de la numeración}
+		\[
+		1\times2^{5} + 1\times2^{4} + 1\times2^{3} + 1\times2^{2} + 1\times2^{1} + 1\times2^{0}
+		\]
+		\boxed{63_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{g.} $100001$}}
+		\subsection*{Calculo mediante el teorema fundamental de la numeración}
+		\[
+		1\times2^{5} + 0\times2^{4} + 0\times2^{3} + 0\times2^{2} + 0\times2^{1} + 1\times2^{0}
+		\]
+		\boxed{33_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{h.} $111000$}}
+		\subsection*{Calculo mediante el teorema fundamental de la numeración}
+		\[
+		1\times2^{5} + 1\times2^{4} + 1\times2^{3} + 0\times2^{2} + 0\times2^{1} + 0\times2^{0}
+		\]
+		\boxed{56_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{i.} $11110001111$}}
+		\subsection*{Calculo mediante el teorema fundamental de la numeración}
+		\[
+		1\times2^{10} + 1\times2^{9} + 1\times2^{8} + 1\times2^{7} + 0\times2^{6} + 0\times2^{5} + 0\times2^{4} + 1\times2^{3} + 1\times2^{2} + 1\times2^{1} + 1\times2^{0}
+		\]
+		\boxed{1935_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{j.} $11100,011$}}
+		\subsection*{Calculo mediante el teorema fundamental de la numeración}
+		\[
+		1\times2^{4} + 1\times2^{3} + 1\times2^{2} + 0\times2^{1} + 0\times2^{0} + 0\times2^{-1} + 1\times2^{-2} + 1\times2^{-3} 
+		\]
+		\boxed{28,375_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{k.} $110011,10011$}}
+		\subsection*{Calculo mediante el teorema fundamental de la numeración}
+		\[
+		1\times2^{5} + 1\times2^{4} + 0\times2^{3} + 0\times2^{2} + 1\times2^{1} + 1\times2^{0} + 1\times2^{-1} + 0\times2^{-2} + 0\times2^{-3} + 1\times2^{-4} + 1\times2^{-5}
+		\]
+		\boxed{51,59375_{10}}
+	\end{center}
+	\begin{center}
+		\colorbox{yellow}{{\textbf{l.} $1010101010,1$}}
+	
+		\[
+		1\times2^{9} + 0\times2^{8} + 1\times2^{7} + 0\times2^{6} + 1\times2^{5} + 0\times2^{4} + 1\times2^{3} + 0\times2^{2} + 1\times2^{1} + 0\times2^{0} + 1\times2^{-1}
+		\]
+		\boxed{682.5_{10}}
+	\end{center}
+
+	5.Convertir los siguientes números decimales a sus equivalentes binarios:
+		\begin{enumerate}
+			\item 64 
+			\item 100 
+			\item 111 
+			\item 145 
+			\item 255 
+			\item 500 
+			\item 34,75 
+			\item 25,25 
+			\item 27,1875 
+			\item 23,1
+		\end{enumerate}
+	
+		
+		\begin{center}
+			\colorbox{yellow}{{\textbf{a.} $64$}}
+			\begin{Verbatim}[formatcom=\centering]
+				64 / 2 = 32, residuo 0
+				32 / 2 = 16, residuo 0
+				16 / 2 =  8, residuo 0
+				 8 / 2 =  4, residuo 0
+				 4 / 2 =  2, residuo 0
+				 2 / 2 =  1, residuo 0
+				 1 ----------------> 1
+			\end{Verbatim}
+		\hspace{1.7cm}\boxed{\texttt{Lectura inversa: 1000000}}
+		\end{center}
+		\begin{center}
+			\colorbox{yellow}{{\textbf{b.} $100$}}
+			\begin{Verbatim}[formatcom=\centering]
+				100 / 2 = 50, residuo 0
+				 50 / 2 = 25, residuo 0
+				 25 / 2 = 12, residuo 1
+				 12 / 2 =  6, residuo 0
+				  6 / 2 =  3, residuo 0
+				  3 / 2 =  1, residuo 1
+				  1 ----------------> 1
+			\end{Verbatim}
+			\hspace{1.7cm}\boxed{\texttt{Lectura inversa: 1100100}}
+		\end{center}
+		\begin{center}
+			\colorbox{yellow}{{\textbf{c.} $111$}}
+			\begin{Verbatim}[formatcom=\centering]
+				111 / 2 = 55, residuo 1
+				 55 / 2 = 27, residuo 1
+				 27 / 2 = 13, residuo 1
+				 13 / 2 =  6, residuo 1
+				  6 / 2 =  3, residuo 0
+				  3 / 2 =  1, residuo 1
+				  1 ----------------> 1
+			\end{Verbatim}
+			\hspace{1.7cm}\boxed{\texttt{Lectura inversa: 1101111}}
+		\end{center}
+		\begin{center}
+			\colorbox{yellow}{{\textbf{d.} $145$}}
+			\begin{Verbatim}[formatcom=\centering]
+				145 / 2 = 72, residuo 1
+				 72 / 2 = 36, residuo 0
+				 36 / 2 = 18, residuo 0
+				 18 / 2 =  9, residuo 0
+				  9 / 2 =  4, residuo 1
+			   	  4 / 2 =  2, residuo 0
+			   	  2 / 2 =  1, residuo 0
+				  1 ----------------> 1
+			\end{Verbatim}
+			\hspace{1.7cm}\boxed{\texttt{Lectura inversa: 10010001}}
+		\end{center}
+		\begin{center}
+			\colorbox{yellow}{{\textbf{e.} $255$}}
+			\begin{Verbatim}[formatcom=\centering]
+				255 / 2 = 127, residuo 1
+				127 / 2 =  63, residuo 1
+				 63 / 2 =  31, residuo 1
+ 				 31 / 2 =  15, residuo 1
+				 15 / 2 =   7, residuo 1
+				  7 / 2 =   3, residuo 1
+				  3 / 2 =   1, residuo 1
+				  1 -----------------> 1
+			\end{Verbatim}
+			\hspace{1.7cm}\boxed{\texttt{Lectura inversa: 11111111}}
+		\end{center}
+		\begin{center}
+			\colorbox{yellow}{{\textbf{f.} $500$}}
+			\begin{Verbatim}[formatcom=\centering]
+				500 / 2 = 250, residuo 0
+				250 / 2 = 125, residuo 0
+				125 / 2 =  62, residuo 1
+				 62 / 2 =  31, residuo 0
+				 31 / 2 =  15, residuo 1
+				 15 / 2 =   7, residuo 1
+				  7 / 2 =   3, residuo 1
+				  3 / 2 =   1, residuo 1
+				  1 -----------------> 1
+			\end{Verbatim}
+			\hspace{1.7cm}\boxed{\texttt{Lectura inversa: 111110100}}
+		\end{center}
+		\begin{center}
+			\colorbox{yellow}{{\textbf{g.} $34,75$}} \\ \vspace{0.3cm}
+		\end{center}	
+		\vspace{-1em}
+	%ACA EMPIEZA EL MINIPAGE
+		\begin{minipage}[t]{0.40\textwidth}
+		\hspace{2,5cm}\text{Parte entera: 34}
+		
+\begin{Verbatim}
+	34 / 2 = 17, residuo 0
+	17 / 2 =  8, residuo 1
+         8 / 2 =  4, residuo 0
+	 4 / 2 =  2, residuo 0
+	 2 / 2 =  1, residuo 0
+	 1 ----------------> 1
+\end{Verbatim}
+		\hspace{1,5cm}\texttt{Lectura inversa: 100010}
+		\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.40\textwidth}
+	\hspace{2cm}\text{Parte decimal: 0,75}
+	
+\begin{Verbatim}
+	0.75 * 2 = 1.5 → 1 
+	0.50 * 2 = 1.0 → 1 
+	0.00 * 2 = 0.0 → 0 
+\end{Verbatim}
+			\hspace{1.7cm}{\texttt{Parte decimal: 0,11}}			
+	\end{minipage}
+\begin{center}
+\hspace{2cm}\boxed{\texttt{Número completo: 100010,11}}
+\end{center}
+
+\begin{center}
+	\colorbox{yellow}{{\textbf{h.} $25,25$}} \\ \vspace{0.3cm}
+\end{center}	
+\vspace{-1em}
+%ACA EMPIEZA EL MINIPAGE
+\begin{minipage}[t]{0.40\textwidth}
+	\hspace{2,5cm}\text{Parte entera: 25}
+	
+	\begin{Verbatim}
+	25 / 2 = 12, residuo 1
+	12 / 2 =  6, residuo 0
+	6 / 2 =   3, residuo 0
+	3 / 2 =   1, residuo 1
+	1 -----------------> 1
+	\end{Verbatim}
+	\hspace{1,5cm}\texttt{Lectura inversa: 11001}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.40\textwidth}
+	\hspace{2cm}\text{Parte decimal: 0,25}
+	
+	\begin{Verbatim}
+	0.25 * 2 = 0.5 → 0
+	0.50 * 2 = 1.0 → 1
+	0.00 * 2 = 0.0 → 0 
+	\end{Verbatim}
+	\hspace{1.7cm}{\texttt{Parte decimal: 0,01}}			
+\end{minipage}
+\begin{center}
+	\hspace{2cm}\boxed{\texttt{Número completo: 11001,01}}
+\end{center}
+
+\begin{center}
+	\colorbox{yellow}{{\textbf{i.} $25,25$}} \\ \vspace{0.3cm}
+\end{center}	
+\vspace{-1em}
+%ACA EMPIEZA EL MINIPAGE
+\begin{minipage}[t]{0.40\textwidth}
+	\hspace{2,5cm}\text{Parte entera: 25}
+	
+	\begin{Verbatim}
+	25 / 2 = 12, residuo 1
+	12 / 2 =  6, residuo 0
+	6 / 2 =   3, residuo 0
+	3 / 2 =   1, residuo 1
+	1 -----------------> 1
+	\end{Verbatim}
+	\hspace{1,5cm}\texttt{Lectura inversa: 11001}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.40\textwidth}
+	\hspace{2cm}\text{Parte decimal: 0,75}
+	
+	\begin{Verbatim}
+	0.25 * 2 = 0.5 → 0
+	0.50 * 2 = 1.0 → 1
+	0.00 * 2 = 0.0 → 0 
+	\end{Verbatim}
+	\hspace{1.7cm}{\texttt{Parte decimal: 0,01}}			
+\end{minipage}
+\begin{center}
+	\hspace{2cm}\boxed{\texttt{Número completo: 11001,01}}
+\end{center}
+
+\begin{center}
+	\colorbox{yellow}{{\textbf{j.} $23,1$}} \\ \vspace{0.3cm}
+\end{center}	
+\vspace{-1em}
+%ACA EMPIEZA EL MINIPAGE
+\begin{minipage}[t]{0.40\textwidth}
+	\hspace{2,5cm}\text{Parte entera: 23}
+	
+	\begin{Verbatim}
+	23 / 2 = 11, residuo 1
+	11 / 2 =  5, residuo 1
+	 5 / 2 =  2, residuo 1
+	 2 / 2 =  1, residuo 0
+	 1 ----------------> 1
+	\end{Verbatim}
+	\hspace{1,5cm}\texttt{Lectura inversa: 101111}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.40\textwidth}
+	\hspace{2cm}\text{Parte decimal: 0,1}
+	
+	\begin{Verbatim}
+	0.1 * 2 = 0.20000 → 0 
+	0.2 * 2 = 0.40000 → 0 
+	0.4 * 2 = 0.80000 → 0 
+	0.8 * 2 = 1.60000 → 1 
+	0.6 * 2 = 1.20000 → 1 
+	0.2 * 2 = 0.40000 → 0 
+	0.4 * 2 = 0.80000 → 0 
+	0.8 * 2 = 1.60000 → 1 
+	0.6 * 2 = 1.20000 → 1 
+	0.2 * 2 = 0.40000 → 0 
+	0.4 * 2 = 0.80000 → 0 
+	0.8 * 2 = 1.60000 → 1 
+	0.6 * 2 = 1.20000 → 1 
+	0.2 * 2 = 0.40000 → 0 
+	0.4 * 2 = 0.80000 → 0 
+	0.8 * 2 = 1.60000 → 1 
+	0.6 * 2 = 1.20000 → 1 
+	0.2 * 2 = 0.40000 → 0 
+	0.4 * 2 = 0.80000 → 0 
+	0.8 * 2 = 1.60000 → 1 
+	0.6 * 2 = 1.20000 → 1 
+	0.2 * 2 = 0.40000 → 0 
+	0.4 * 2 = 0.80000 → 0 
+	\end{Verbatim}
+	\hspace{1.7cm}{\texttt{Parte decimal: 0,00011001100110011001100}}			
+\end{minipage}
+\begin{center}
+	\hspace{2cm}\boxed{\texttt{Número aproximado: 10111.00011001100110011001100}}
+\end{center}
+
+	6.Convertir los siguientes números enteros hexadecimales en sus equivalentes
+	decimales:
+	\begin{enumerate}
+		\item C 
+		\item 9F 
+		\item D52 
+		\item 67E 
+		\item ABCD
+	\end{enumerate}
+	
+	%66666666666666666666aaaaaaaaaaaaaaaaaaaaaaaa		
+	\[
+	\mathtt{
+		\colorbox{yellow}{\textbf{a.} C} \qquad
+		\underset{\text{F}}{\boxed{\mathtt{1111}}}
+	}	
+	\]
+	\[
+	1\times2^{3} + 1\times2^{2} + 1\times2^{1} + 1\times2^{0}
+	\]
+	\begin{center}
+	\boxed{15_{10}}
+	\end{center}
+	%66666666666666666bbbbbbbbbbbbbbbbbbbbbbbbbbbb
+	\[
+	\mathtt{
+		\colorbox{yellow}{\textbf{b.} 9F} \qquad
+		\underset{\text{9}}{\boxed{\mathtt{1001}}}
+		\underset{\text{F}}{\boxed{\mathtt{1111}}}
+	}	
+	\]
+	\[
+	1\times2^{7} + 0\times2^{6} + 0\times2^{5} + 1\times2^{4} + 1\times2^{3} + 1\times2^{2} + 1\times2^{1} + 1\times2^{0}
+	\]
+	\begin{center}
+		\boxed{159_{10}}
+	\end{center}
+	%666666666666666666666ccccccccccccccccccccccccc
+	\[
+	\mathtt{
+		\colorbox{yellow}{\textbf{c.} D52} \qquad
+		\underset{\text{D}}{\boxed{\mathtt{1101}}}
+		\underset{\text{5}}{\boxed{\mathtt{0101}}}
+		\underset{\text{2}}{\boxed{\mathtt{0010}}}
+	}	
+	\]
+	\[
+	1\times2^{11} + 1\times2^{10} + 0\times2^{9} + 1\times2^{8} + 0\times2^{7} + 1\times2^{6} + 0\times2^{5} + 1\times2^{4} + 0\times2^{3} + 0\times2^{2} + 1\times2^{1} + 0\times2^{0}
+	\]
+	\begin{center}
+		\boxed{3410_{10}}
+	\end{center}
+	%6666666666666666666666666ddddddddddddddddddddddddd
+	\[
+	\mathtt{
+		\colorbox{yellow}{\textbf{d.} 67E} \qquad
+		\underset{\text{6}}{\boxed{\mathtt{0110}}}
+		\underset{\text{7}}{\boxed{\mathtt{0111}}}
+		\underset{\text{E}}{\boxed{\mathtt{1110}}}
+	}	
+	\]
+	\[
+	0\times2^{11} + 1\times2^{10} + 1\times2^{9} + 0\times2^{8} + 0\times2^{7} + 1\times2^{6} + 1\times2^{5} + 1\times2^{4} + 1\times2^{3} + 1\times2^{2} + 1\times2^{1} + 0\times2^{0}
+	\]
+	\begin{center}
+		\boxed{1662_{10}}
+	\end{center}
+	%66666666666666666666666666eeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+	\[
+	\mathtt{
+		\colorbox{yellow}{\textbf{e.} ABCD} \qquad
+		\underset{\text{A}}{\boxed{\mathtt{1010}}}
+		\underset{\text{B}}{\boxed{\mathtt{1011}}}
+		\underset{\text{C}}{\boxed{\mathtt{1100}}}
+		\underset{\text{D}}{\boxed{\mathtt{1101}}}
+	}	
+	\]
+	\[
+	1\times2^{15} + 0\times2^{14} + 1\times2^{13} + 0\times2^{12} + 1\times2^{11} + 0\times2^{10} + 1\times2^{9} + 1\times2^{8} + 1\times2^{7} + 1\times2^{6} + 0\times2^{5} + 0\times2^{4} + 1\times2^{3} + 1\times2^{2} + 0\times2^{1} + 1\times2^{0}
+	\]
+	\begin{center}
+		\boxed{43981_{10}}
+	\end{center}
+	
+	7. Convertir los siguientes números hexadecimales a sus equivalentes
+	decimales
+	\begin{enumerate} 
+		\item F,4 
+		\item D3,E 
+		\item 111,1 
+		\item 888,8 
+		\item EBA,C
+	\end{enumerate}	
+	%77777777777777777777777777777777777aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	\[
+	\mathtt{
+		\colorbox{yellow}{\textbf{a.} F,4} \qquad
+		\underset{\text{F}}{\boxed{\mathtt{1111}}}
+		\underset{\text{,}}{\boxed{\mathtt{}}}
+		\underset{\text{4}}{\boxed{\mathtt{0100}}}
+	}	
+	\]
+	\[
+	 1\times2^{3} + 1\times2^{2} + 1\times2^{1} + 1\times2^{0} + 0\times2^{-1} + 1\times2^{-2} + 0\times2^{-3} + 0\times2^{-4}
+	\]
+	\begin{center}
+		\boxed{15,25_{10}}
+	\end{center}
+	%77777777777777777777777777777777777bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+	\[
+	\mathtt{
+		\colorbox{yellow}{\textbf{b.} D3,E} \qquad
+		\underset{\text{D}}{\boxed{\mathtt{1101}}}
+		\underset{\text{3}}{\boxed{\mathtt{0011}}}
+		\underset{\text{,}}{\boxed{\mathtt{}}}
+		\underset{\text{E}}{\boxed{\mathtt{1110}}}
+	}	
+	\]
+	\[
+	1\times2^{7} + 1\times2^{6} + 0\times2^{5} + 1\times2^{4} + 0\times2^{3} + 0\times2^{2} + 1\times2^{1} + 1\times2^{0} + 1\times2^{-1} + 1\times2^{-2} + 1\times2^{-3} + 0\times2^{-4}
+	\]
+	\begin{center}
+		\boxed{211,875_{10}}
+	\end{center}
+	%777777777777777777777777777777777777ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+	\[
+	\mathtt{
+		\colorbox{yellow}{\textbf{c.} 111,1} \qquad
+		\underset{\text{1}}{\boxed{\mathtt{0001}}}
+		\underset{\text{1}}{\boxed{\mathtt{0001}}}
+		\underset{\text{1}}{\boxed{\mathtt{0001}}}
+		\underset{\text{,}}{\boxed{\mathtt{}}}
+		\underset{\text{1}}{\boxed{\mathtt{0001}}}
+	}	
+	\]
+	\[
+    0\times2^{11} + 0\times2^{10} + 0\times2^{9} + 1\times2^{8} + 0\times2^{7} + 0\times2^{6} + 0\times2^{5} + 1\times2^{4} + 0\times2^{3} + 0\times2^{2} + 0\times2^{1} + 1\times2^{0} + 0\times2^{-1} + 0\times2^{-2} + 0\times2^{-3} + 1\times2^{-4}
+	\]
+	\begin{center}
+		\boxed{273,0625_{10}}
+	\end{center}
+	%777777777777777777777777777777777777ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+	\[
+	\mathtt{
+		\colorbox{yellow}{\textbf{d.} 888,8} \qquad
+		\underset{\text{8}}{\boxed{\mathtt{1000}}}
+		\underset{\text{8}}{\boxed{\mathtt{1000}}}
+		\underset{\text{8}}{\boxed{\mathtt{1000}}}
+		\underset{\text{,}}{\boxed{\mathtt{}}}
+		\underset{\text{8}}{\boxed{\mathtt{1000}}}
+	}	
+	\]
+	\[
+	1\times2^{11} + 0\times2^{10} + 0\times2^{9} + 0\times2^{8} + 1\times2^{7} + 0\times2^{6} + 0\times2^{5} + 0\times2^{4} + 1\times2^{3} + 0\times2^{2} + 0\times2^{1} + 0\times2^{0} + 1\times2^{-1} + 0\times2^{-2} + 0\times2^{-3} + 0\times2^{-4}
+	\]
+	\begin{center}
+		\boxed{2184,5_{10}}
+	\end{center}	
+	%77777777777777777777777777777777777777777eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+	\[
+	\mathtt{
+		\colorbox{yellow}{\textbf{e.} EBA,C} \qquad
+		\underset{\text{E}}{\boxed{\mathtt{1110}}}
+		\underset{\text{B}}{\boxed{\mathtt{1011}}}
+		\underset{\text{A}}{\boxed{\mathtt{1010}}}
+		\underset{\text{,}}{\boxed{\mathtt{}}}
+		\underset{\text{C}}{\boxed{\mathtt{1100}}}
+	}	
+	\]
+	\[
+	1\times2^{11} + 1\times2^{10} + 1\times2^{9} + 0\times2^{8} + 1\times2^{7} + 0\times2^{6} + 1\times2^{5} + 1\times2^{4} + 1\times2^{3} + 0\times2^{2} + 1\times2^{1} + 0\times2^{0} + 1\times2^{-1} + 1\times2^{-2} + 0\times2^{-3} + 0\times2^{-4}
+	\]
+	\begin{center}
+		\boxed{3770,75_{10}}
+	\end{center}	
+
+	8. Convertir los números (AF315)16 y (7326)8 a base 10 y base 2	
+	
+	\[
+	\mathtt{
+		\colorbox{yellow}{ $AF315_{16}$} \qquad
+		\underset{\text{A}}{\boxed{\mathtt{1010}}}
+		\underset{\text{F}}{\boxed{\mathtt{1111}}}
+		\underset{\text{3}}{\boxed{\mathtt{0011}}}
+		\underset{\text{1}}{\boxed{\mathtt{0001}}}
+		\underset{\text{5}}{\boxed{\mathtt{0101}}}
+	}	
+	\]
+	\[
+	1\times2^{19} + 0\times2^{18} + 1\times2^{17} + 0\times2^{16} + 1\times2^{15} + 1\times2^{14} + 1\times2^{13} + 1\times2^{12} + 0\times2^{11} + 0\times2^{10} + 1\times2^{9} + 1\times2^{8} + 0\times2^{7} + 0\times2^{6} + 0\times2^{5} + 1\times2^{4} + 0\times2^{3} + 1\times2^{2} + 0\times2^{1} + 1\times2^{0}
+	\]
+	\begin{center}
+		\boxed{717589_{10}}
+	\end{center}
+	
+	
+	\[
+	\mathtt{
+		\colorbox{yellow}{ $7326_{8}$} \qquad
+		\underset{\text{7}}{\boxed{\mathtt{111}}}
+		\underset{\text{3}}{\boxed{\mathtt{011}}}
+		\underset{\text{2}}{\boxed{\mathtt{010}}}
+		\underset{\text{6}}{\boxed{\mathtt{110}}}
+	}	
+	\]
+	\[
+  	 1\times2^{11} + 1\times2^{10} + 1\times2^{9} + 0\times2^{8} + 1\times2^{7} + 1\times2^{6} + 0\times2^{5} + 1\times2^{4} + 0\times2^{3} + 1\times2^{2} + 1\times2^{1} + 0\times2^{0}
+	\]
+	\begin{center}
+		\boxed{3798_{10}}
+	\end{center}
+
+	9. Convertir los números (245,625)10 y (1797,223)10 a binario, octal y hexadecimal.
+	
+	\begin{center}
+		\colorbox{yellow}{{$245,625_{10}$}} \\ \vspace{0.3cm}
+	\end{center}	
+	\vspace{-1em}
+	%ACA EMPIEZA EL MINIPAGE
+	\begin{minipage}[t]{0.40\textwidth}
+		\hspace{2,5cm}\text{Parte entera: 245}
+		
+\begin{Verbatim}
+           245 / 2 = 122, residuo 1
+  	 122 / 2 =  61, residuo 0
+ 	   61 / 2 =  30, residuo 1
+ 	   30 / 2 =  15, residuo 0
+ 	   15 / 2 =   7, residuo 1
+             7 / 2 =   3, residuo 1
+             3 / 2 =   1, residuo 1
+	     1 -----------------> 1
+	     
+	    Lectura inversa: 11110101
+		\end{Verbatim}
+	
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.625\textwidth}
+		\hspace{2cm}\text{Parte decimal: 0,1}
+		
+		\begin{Verbatim}
+			0.625 * 2 = 1.25 → 1 
+			0.250 * 2 = 0.50 → 0 
+			0.500 * 2 = 1.00 → 1 
+			0.000 * 2 = 0.00 → 0 
+		\end{Verbatim}
+		\hspace{5cm}{\texttt{Parte decimal: 0,101}}			
+	\end{minipage}
+	\begin{center}
+		\hspace{2cm}\boxed{\texttt{Número completo binario: $11110101.101_2$}}
+	\end{center}
+	
+	\[
+	\mathtt{
+		\colorbox{yellow}{Número en octal:} \qquad
+		\underset{3}{\boxed{\mathtt{011}}}
+		\underset{6}{\boxed{\mathtt{110}}}
+		\underset{5}{\boxed{\mathtt{101}}}
+		\underset{}{\boxed{\mathtt{,}}}
+		\underset{5}{\boxed{\mathtt{101}}}
+		\text{ → $365,5_8$}
+	}	
+	\]
+	
+	\[
+	\mathtt{
+		\colorbox{yellow}{Número en hexadecimal:} \qquad
+		\underset{F}{\boxed{\mathtt{1111}}}
+		\underset{5}{\boxed{\mathtt{0101}}}
+		\underset{}{\boxed{\mathtt{,}}}
+		\underset{A}{\boxed{\mathtt{1010}}}
+		\text{ → $F5,A_{16}$}
+	}	
+	\]
+	
+%el segundo el segundo el segundo el segundo el segundo el segundo
+
+\begin{center}
+	\colorbox{yellow}{{$1797,223_{10}$}} \\ \vspace{0.3cm}
+\end{center}	
+\vspace{-1em}
+%ACA EMPIEZA EL MINIPAGE
+\begin{minipage}[t]{0.40\textwidth}
+	\hspace{2,5cm}\text{Parte entera: 245}
+	
+	\begin{Verbatim}
+	1797 / 2 = 898, residuo 1
+         898 / 2 = 449, residuo 0
+	 249 / 2 = 224, residuo 1
+	 224 / 2 = 112, residuo 0
+	 112 / 2 =  56, residuo 0
+	  56 / 2 =  28, residuo 0
+	  28 / 2 =  14, residuo 0
+	  14 / 2 =   7, residuo 0
+	   7 / 2 =   3, residuo 1
+	   3 / 2 =   1, residuo 1
+	   1 -----------------> 1
+		
+	Lectura inversa: 11100000101
+	\end{Verbatim}
+	
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.625\textwidth}
+	\hspace{2cm}\text{Parte decimal: 0,1}
+	
+	\begin{Verbatim}
+		0.22300 * 2 = 0.44600 → 0 
+		0.44600 * 2 = 0.89200 → 0 
+		0.89200 * 2 = 1.78400 → 1  
+		0.78400 * 2 = 1.56800 → 1 
+		0.56800 * 2 = 1.13600 → 1 
+		0.13600 * 2 = 0.27200 → 0 
+		0.27200 * 2 = 0.54400 → 0 
+		0.54400 * 2 = 1.08800 → 1 
+		0.08800 * 2 = 0.17600 → 0 
+		0.17600 * 2 = 0.35200 → 0 
+		0.35200 * 2 = 0.70400 → 0 
+		0.70400 * 2 = 1.40800 → 1 
+		0.40800 * 2 = 0.81600 → 0 
+		0.81600 * 2 = 1.63200 → 1 
+		0.63200 * 2 = 1.26400 → 1 
+		0.26400 * 2 = 0.52800 → 0 
+		0.52800 * 2 = 1.05600 → 1 
+		0.05600 * 2 = 0.11200 → 0 
+		0.11200 * 2 = 0.22400 → 0 
+		0.22400 * 2 = 0.44800 → 0 
+		0.44800 * 2 = 0.89600 → 0 
+		0.89600 * 2 = 1.79200 → 1 
+		0.79200 * 2 = 1.58400 → 1 
+		
+	Parte decimal: 0,00111001000101101000011
+	\end{Verbatim} 
+	
+\end{minipage}
+\begin{center}
+	\hspace{2cm}\boxed{\texttt{Número aproximado: 11100000101.00111001000101101000011}}
+\end{center}
+
+\[
+\mathtt{
+	\colorbox{yellow}{Número en octal:} \qquad
+	\underset{3}{\boxed{\mathtt{011}}}
+	\underset{4}{\boxed{\mathtt{100}}}
+	\underset{0}{\boxed{\mathtt{000}}}
+	\underset{5}{\boxed{\mathtt{101}}}
+	\underset{}{\boxed{\mathtt{,}}}
+	\underset{1}{\boxed{\mathtt{001}}}
+	\underset{6}{\boxed{\mathtt{110}}}
+	\underset{2}{\boxed{\mathtt{010}}}
+	\underset{1}{\boxed{\mathtt{001}}}
+	\underset{3}{\boxed{\mathtt{011}}}
+	\underset{2}{\boxed{\mathtt{010}}}
+	\text{ → $3405.162132_8$}
+}	
+\] 
+
+\[
+\mathtt{
+	\colorbox{yellow}{Número en hexadecimal:} \qquad
+	\underset{7}{\boxed{\mathtt{0111}}}
+	\underset{0}{\boxed{\mathtt{0000}}}
+	\underset{5}{\boxed{\mathtt{0101}}}
+	\underset{}{\boxed{\mathtt{,}}}
+	\underset{3}{\boxed{\mathtt{0011}}}
+	\underset{9}{\boxed{\mathtt{1001}}}
+	\underset{1}{\boxed{\mathtt{0001}}}
+	\underset{6}{\boxed{\mathtt{0110}}}
+	\underset{8}{\boxed{\mathtt{1000}}}
+	\text{ → $705.39168_{16}$}
+}	
+\]	
+	
+	10.Convertir el número (49403180,AF7)16 a binario, octal y decimal. 
+	\begin{center}
+	\colorbox{yellow}{{$49403180,AF7_{16}$}} \\ \vspace{0.3cm}
+
+	\text{Forma binaria: Cada numero hexadecimal formado por binarios de 4 bits}
+	\[
+	\mathtt{
+		\underset{4}{\boxed{\mathtt{0100}}}
+		\underset{9}{\boxed{\mathtt{1001}}}
+		\underset{4}{\boxed{\mathtt{0100}}}
+		\underset{0}{\boxed{\mathtt{0000}}}
+		\underset{3}{\boxed{\mathtt{0011}}}
+		\underset{1}{\boxed{\mathtt{0001}}}
+		\underset{8}{\boxed{\mathtt{1000}}}
+		\underset{0}{\boxed{\mathtt{0000}}}
+		\underset{}{\boxed{\mathtt{,}}}
+		\underset{A}{\boxed{\mathtt{1010}}}
+		\underset{F}{\boxed{\mathtt{1111}}}
+		\underset{7}{\boxed{\mathtt{0111}}}
+	}	
+	\]
+	\text{Forma Octal: Separando el binario cada 3 bits para cada cifra}
+	\[
+	\mathtt{
+		\underset{4}{\boxed{\mathtt{0100}}}
+		\underset{9}{\boxed{\mathtt{1001}}}
+		\underset{4}{\boxed{\mathtt{0100}}}
+		\underset{0}{\boxed{\mathtt{0000}}}
+		\underset{3}{\boxed{\mathtt{0011}}}
+		\underset{1}{\boxed{\mathtt{0001}}}
+		\underset{8}{\boxed{\mathtt{1000}}}
+		\underset{0}{\boxed{\mathtt{0000}}}
+		\underset{}{\boxed{\mathtt{,}}}
+		\underset{A}{\boxed{\mathtt{1010}}}
+		\underset{F}{\boxed{\mathtt{1111}}}
+		\underset{7}{\boxed{\mathtt{0111}}}
+	}	
+	\]
+	\text{Forma decimal: Usando el binario mediante el método fundamental de la numeración}
+	\begin{multline*}
+		0\times2^{31} + 1\times2^{30} + 0\times2^{29} + 0\times2^{28} + 1\times2^{27} + 0\times2^{26} + 0\times2^{25} + 1\times2^{24} +	\\0\times2^{23} + 1\times2^{22} + 0\times2^{21} + 0\times2^{20} + 0\times2^{19} + 0\times2^{18} + 0\times2^{17} + 0\times2^{16} +	\\0\times2^{15} + 0\times2^{14} + 1\times2^{13} + 1\times2^{12} + 0\times2^{11} + 0\times2^{10} + 0\times2^{9} + 1\times2^{8} +\\1\times2^{7} + 0\times2^{6} + 0\times2^{5} + 0\times2^{4} + 0\times2^{3} + 0\times2^{2} + 0\times2^{1} + 0\times2^{0} + \\1\times2^{-1} + 0\times2^{-2} + 1\times2^{-3} + 0\times2^{-4} + 1\times2^{-5} + 1\times2^{-6} + 1\times2^{-7} + 1\times2^{-8} +\\0\times2^{-9} + 1\times2^{-10} + 1\times2^{-11} + 1\times2^{-12}
+	\end{multline*}
+\end{center}	
+
+	\hspace{5cm}\boxed{\text{Resultado: $1228943744.6853027_{10}$}} \\
+
+
+	11. Convertir los siguientes números de base 10 a base 2,base 8 y base 16
+	\begin{enumerate}
+		\item  13 
+		\item  94 
+		\item 356
+	\end{enumerate}
+\begin{center}	
+	\colorbox{yellow}{{\textbf{a.} $13$}} \\ \vspace{0.3cm}
+		     \begin{Verbatim}
+		     	13 / 2 =  6, residuo 1
+		     	 6 / 2 =  3, residuo 0
+		     	 3 / 2 =  1, residuo 1
+		     	 1 ----------------> 1
+		     	
+		     	 Lectura inversa: 1101
+		     \end{Verbatim}
+	     
+	     \[
+	     \mathtt{
+	     	\colorbox{yellow}{Número en octal:} \qquad
+	     	\underset{1}{\boxed{\mathtt{001}}}
+	     	\underset{5}{\boxed{\mathtt{101}}}
+	     	\text{ → $15_8$}
+	     }	
+	     \] 
+	     
+	     \[
+	     \mathtt{
+	     	\colorbox{yellow}{Número en hexadecimal:} \qquad
+	     	\underset{D}{\boxed{\mathtt{1101}}}
+	      	\text{ → $D_{16}$}
+	     }	
+	     \]	
+\end{center}
+\begin{center}	
+	\colorbox{yellow}{{\textbf{b.} $94$}} \\ \vspace{0.3cm}
+		    \begin{Verbatim}
+		    	94 / 2 =  47, residuo 0
+		    	47 / 2 =  23, residuo 1
+		    	23 / 2 =  11, residuo 1
+		    	11 / 2 =   5, residuo 1
+		             5 / 2 =   2, residuo 1
+		    	 2 / 2 =   1, residuo 0
+		    	 1 -----------------> 1
+		    	
+		    	Lectura inversa: 1011110
+		    \end{Verbatim}
+	
+	\[
+	\mathtt{
+		\colorbox{yellow}{Número en octal:} \qquad
+		\underset{1}{\boxed{\mathtt{001}}}
+		\underset{3}{\boxed{\mathtt{011}}}
+		\underset{6}{\boxed{\mathtt{110}}}
+		\text{ → $136_8$}
+	}	
+	\] 
+	
+	\[
+	\mathtt{
+		\colorbox{yellow}{Número en hexadecimal:} \qquad
+		\underset{5}{\boxed{\mathtt{0101}}}
+		\underset{E}{\boxed{\mathtt{1110}}}
+		\text{ → $5E_{16}$}
+	}	
+	\]		
+\end{center}	
+\begin{center}	
+	\colorbox{yellow}{{\textbf{c.} $356$}} \\ \vspace{0.3cm}
+	    	\begin{Verbatim}
+	    		356 / 2 = 178, residuo 0
+	    		178 / 2 =  89, residuo 0
+	    		 89 / 2 =  44, residuo 1
+	    	         44 / 2 =  22, residuo 0
+	    		 22 / 2 =  11, residuo 0
+	    		 11 / 2 =   5, residuo 1
+	    	 	 5 / 2 =   2, residuo 1
+	    		  2 / 2 =   1, residuo 0
+	    		  1 -----------------> 1
+		
+	        	    Lectura inversa: 101100100
+	\end{Verbatim}
+	
+	\[
+	\mathtt{
+		\colorbox{yellow}{Número en octal:} \qquad
+		\underset{5}{\boxed{\mathtt{101}}}
+		\underset{4}{\boxed{\mathtt{100}}}
+		\underset{4}{\boxed{\mathtt{100}}}
+		\text{ → $544_8$}
+	}	
+	\] 
+	
+	\[
+	\mathtt{
+		\colorbox{yellow}{Número en hexadecimal:} \qquad
+		\underset{1}{\boxed{\mathtt{0001}}}
+		\underset{6}{\boxed{\mathtt{0110}}}
+		\underset{4}{\boxed{\mathtt{0100}}}
+		\text{ → $164_{16}$}
+	}	
+	\]		
+\end{center}	
+	
+	12.Convertir los siguientes números de base 10 a base 2.
+	\begin{enumerate}
+		\item 0,00625 
+		\item 43,32 
+		\item 0,51	
+	\end{enumerate}
+	
+	\begin{center}	
+		\colorbox{yellow}{{\textbf{a.} $0,00625$}} \\ \vspace{0.3cm}
+		
+		Parte entera = 0
+		
+        	\begin{Verbatim}
+        		0.00625 * 2 = 0.01250 → 0 
+        		0.01250 * 2 = 0.02500 → 0 
+        		0.02500 * 2 = 0.05000 → 0 
+        		0.05000 * 2 = 0.10000 → 0 
+        		0.10000 * 2 = 0.20000 → 0 
+        		0.20000 * 2 = 0.40000 → 0 
+        		0.40000 * 2 = 0.80000 → 0 
+        		0.80000 * 2 = 1.60000 → 1 
+        		0.60000 * 2 = 1.20000 → 1 
+        		0.20000 * 2 = 0.40000 → 0 
+        		0.40000 * 2 = 0.80000 → 0 
+        		0.80000 * 2 = 1.60000 → 1 
+        		0.60000 * 2 = 1.20000 → 1 
+        		0.20000 * 2 = 0.40000 → 0 
+        		0.40000 * 2 = 0.80000 → 0 
+        		0.80000 * 2 = 1.60000 → 1 
+        		0.60000 * 2 = 1.20000 → 1 
+        		0.20000 * 2 = 0.40000 → 0 
+        		0.40000 * 2 = 0.80000 → 0 
+        		0.80000 * 2 = 1.60000 → 1 
+        		0.60000 * 2 = 1.20000 → 1 
+        		0.20000 * 2 = 0.40000 → 0 
+        		0.40000 * 2 = 0.80000 → 0
+        		
+        		Parte decimal: 00000001100110011001100
+        	\end{Verbatim}
+		\boxed{\text{Numero aproximado: $0,00000001100110011001100_2$}}
+	\end{center}
+	\begin{center}
+	\colorbox{yellow}{{\textbf{b.} $43,32$}} \\ \vspace{0.3cm}
+	             \begin{Verbatim}
+	             	43 / 2 =  21, residuo 1
+	             	21 / 2 =  10, residuo 1
+	             	10 / 2 =   5, residuo 0
+	             	 5 / 2 =   2, residuo 1
+	             	 2 / 2 =   1, residuo 0
+	             	 1 -----------------> 1
+	             	
+	             	Lectura inversa: 101011
+	             \end{Verbatim}
+	
+	    		\begin{Verbatim}
+	    		0.32000 * 2 = 0.64000 → 0 
+	    		0.64000 * 2 = 1.28000 → 1 
+	    		0.28000 * 2 = 0.56000 → 0 
+	    		0.56000 * 2 = 1.12000 → 1 
+	    		0.12000 * 2 = 0.24000 → 0 
+	    		0.24000 * 2 = 0.48000 → 0 
+	    		0.48000 * 2 = 0.96000 → 0 
+	    		0.96000 * 2 = 1.92000 → 1 
+	    		0.92000 * 2 = 1.84000 → 1 
+	    		0.84000 * 2 = 1.68000 → 1 
+	    		0.68000 * 2 = 1.36000 → 1 
+	    		0.36000 * 2 = 0.72000 → 0 
+	    		0.72000 * 2 = 1.44000 → 1 
+	    		0.44000 * 2 = 0.88000 → 0 
+	    		0.88000 * 2 = 1.76000 → 1 
+	    		0.76000 * 2 = 1.52000 → 1 
+	    		0.52000 * 2 = 1.04000 → 1 
+	    		0.04000 * 2 = 0.08000 → 0 
+	    		0.08000 * 2 = 0.16000 → 0 
+	    		0.16000 * 2 = 0.32000 → 0 
+	    		0.32000 * 2 = 0.64000 → 0 
+	    		0.64000 * 2 = 1.28000 → 1 
+	    		0.28000 * 2 = 0.56000 → 0
+	    
+	    	Parte decimal: 01010001111010111000010
+	    \end{Verbatim}
+	
+		\boxed{\text{Numero aproximado: $101011,01010001111010111000010_2$}}
+	\end{center}
+	\begin{center}	
+		\colorbox{yellow}{{\textbf{c.} $0,51$}} \\ \vspace{0.3cm}
+		
+		Parte entera = 0
+		
+		\begin{Verbatim}
+			0.51000 * 2 = 1.02000 → 1 
+			0.02000 * 2 = 0.04000 → 0 
+			0.04000 * 2 = 0.08000 → 0 
+			0.08000 * 2 = 0.16000 → 0 
+			0.16000 * 2 = 0.32000 → 0 
+			0.32000 * 2 = 0.64000 → 0 
+			0.64000 * 2 = 1.28000 → 1 
+			0.28000 * 2 = 0.56000 → 0 
+			0.56000 * 2 = 1.12000 → 1 
+			0.12000 * 2 = 0.24000 → 0 
+			0.24000 * 2 = 0.48000 → 0 
+			0.48000 * 2 = 0.96000 → 0 
+			0.96000 * 2 = 1.92000 → 1 
+			0.92000 * 2 = 1.84000 → 1 
+			0.84000 * 2 = 1.68000 → 1 
+			0.68000 * 2 = 1.36000 → 1 
+			0.36000 * 2 = 0.72000 → 0 
+			0.72000 * 2 = 1.44000 → 1 
+			0.44000 * 2 = 0.88000 → 0 
+			0.88000 * 2 = 1.76000 → 1 
+			0.76000 * 2 = 1.52000 → 1 
+			0.52000 * 2 = 1.04000 → 1 
+			0.04000 * 2 = 0.08000 → 0
+			
+		Parte decimal: 10000010100011110101110
+		\end{Verbatim}
+		\boxed{\text{Numero aproximado: $0,10000010100011110101110_2$}}
+	\end{center}
+	
+	13.Escribir el equivalente de base 8 de los siguientes números en base 2.
+	\begin{enumerate}
+		\item 10111100101 
+		\item 1101,101
+		\item 1,0111
+	\end{enumerate}
+	
+	\begin{center}
+	\colorbox{yellow}{{\textbf{a.} $10111100101_2$}} \\ 
+	\[
+	1\times2^{10} + 0\times2^{9} + 1\times2^{8} + 1\times2^{7} + 1\times2^{6} + 1\times2^{5} + 0\times2^{4} + 0\times2^{3} + 1\times2^{2} + 0\times2^{1} + 1\times2^{0}
+	\]
+	\boxed{1509_{10}}
+	\end{center}
+	
+		\begin{center}
+		\colorbox{yellow}{{\textbf{b.} $1101,101_2$}} \\ 
+		\[
+		1\times2^{3} + 1\times2^{2} + 0\times2^{1} + 1\times2^{0} + 1\times2^{-1} + 0\times2^{-2} + 1\times2^{-3}
+		\]
+		\boxed{13,625_{10}}
+	\end{center}
+	
+	\begin{center}
+		\colorbox{yellow}{{\textbf{c.} $1,0111_2$}} \\ 
+		\[
+		1\times2^{0} + 0\times2^{-1} + 1\times2^{-2} + 1\times2^{-3} + 1\times2^{-4} 
+		\]
+		\boxed{1,4375_{10}}
+	\end{center}
+	
+	14. Calcular el valor decimal de los números binarios (11100111) y (10111111)
+	suponiendo que están representados en complemento a 2. Repetir el ejercicio
+	suponiendo que están representados en complemento a 1.
+	
+	\begin{center}
+	\subsection*{Complemento a2: 11100111}
+	\[
+	\text{Invertir bits: } 00011000
+	\]
+	\[
+	\text{Sumar 1: } 00011000 + 1 = 00011001 = 25
+	\]
+	\[
+	\boxed{\text{Resultado final: } -25}
+	\]
+	
+	\subsection*{Complemento a2: 10111111}
+	\[
+	\text{Invertir bits: } 01000000
+	\]
+	\[
+	\text{Sumar 1: } 01000000 + 1 = 01000001 = 65
+	\]
+	\[
+	\boxed{\text{Resultado final: } -65}
+	\]	
+	
+	\subsection*{Complemento a1: 11100111}
+	\[
+	\text{Invertir bits: } 00011000 = 24
+	\]
+	\[
+	\boxed{\text{Resultado final: } -24}
+	\]
+	
+	\subsection*{Complemento a1: 10111111}
+	\[
+	\text{Invertir bits: } 01000000 = 64
+	\]
+	\[
+	\boxed{\text{Resultado final: } -64}
+	\]
+	\end{center}
+	
+	15.Resolver los ejercicios siguientes:
+	\begin{enumerate}
+		\item Representar (-499)10 en magnitud y signo.
+		\item Representar (-628)10 en complemento a 2.
+		\item Convertir a base 10 el número binario 1001000110, dado en magnitud y signo.
+		\item Convertir a base 10 el número binario 1110011101, dado en complemento a2
+	\end{enumerate}
+	
+	\begin{center}
+	\colorbox{yellow}{{\textbf{a.} $-499$}} \\ \vspace{0.3cm}
+		\begin{Verbatim}
+			499 / 2 =  249, residuo 1
+			249 / 2 =  124, residuo 1
+			124 / 2 =   62, residuo 0
+			 62 / 2 =   31, residuo 0
+			 31 / 2 =   15, residuo 1
+			 15 / 2 =    7, residuo 1
+			  7 / 2 =    3, residuo 1
+			  3 / 2 =    1, residuo 1
+			  1 ------------------> 1
+		
+	      	Lectura inversa: 111110011
+	\end{Verbatim}
+	\[
+	\text{Bit de signo: } 1
+	\]
+	\[
+	\text{Magnitud binario: }  111110011
+	\]
+	\[
+	\boxed{\text{Resultado final: } 1111110011}
+	\]
+	\end{center}
+	
+		\begin{center}
+		\colorbox{yellow}{{\textbf{b.} $-628$}} \\ \vspace{0.3cm}
+		\begin{Verbatim}
+			628 / 2 =  314, residuo 0
+			314 / 2 =  157, residuo 0
+			157 / 2 =   78, residuo 1
+			 78 / 2 =   39, residuo 0
+			39 / 2 =   19, residuo 1
+			19 / 2 =    9, residuo 1
+			9 / 2 =    4, residuo 1
+			4 / 2 =    2, residuo 0
+			2 / 2 =    1, residuo 0
+			1 ------------------> 1
+			
+			Lectura inversa: 1001110100
+		\end{Verbatim}
+		\[
+		\text{Se le agrega un bit mas para alcanzar el rango: } 01001110100
+		\]
+		\[
+		\text{Invertir bits: } 10110001011
+		\]
+		\[
+		\text{Sumar 1: } 10110001011 + 1 = 10110001100
+		\]
+		\[
+		\boxed{\text{Resultado final: } 10110001100}
+		\]
+	\end{center}
+	
+	\begin{center}
+		\colorbox{yellow}{{\textbf{c.} $1001000110_2$}} \\
+		\[
+		\text{Primer bit de signo es negativo: } 1
+		\] 
+		\[
+		0\times2^{8} + 0\times2^{7} + 1\times2^{6} + 0\times2^{5} + 0\times2^{4} + 0\times2^{3} + 1\times2^{2} + 1\times2^{1} + 0\times2^{0}
+		\]
+		\boxed{-70_{10}}
+	\end{center}
+	
+	\begin{center}
+	\colorbox{yellow}{{\textbf{d.} $1110011101_2$}} \\
+	\[
+	\text{Invertir bits: } 0001100010
+	\]
+	\[
+	\text{Sumar 1: } 0001100010 + 1 = 0001100011 = 99
+	\]
+	\[
+	\boxed{\text{Resultado final: } -99}
+	\]
+	\end{center}
+	
+	
 \end{document}
