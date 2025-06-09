@@ -13,6 +13,7 @@
 \usepackage{float}
 \usepackage[utf8]{inputenc}
 \usepackage{textcomp}
+\usepackage{tikz}
 \usepackage[a4paper, top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 
 \pagestyle{fancy}
@@ -257,6 +258,7 @@
 		---	
 	\end{center}
 	%ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+		\vspace{6cm}
 		\begin{center}	
 		\colorbox{yellow}{{\textbf{c.} $291.072$}}
 		
@@ -457,19 +459,19 @@
 			\subsection*{Conversión a binario}
 			~~~~~~~\text{Parte entera: Dividimos sucesivamente por 2}
 			\begin{center}
-				\begin{Verbatim}[formatcom=\centering]
-					14 / 2 = 7, residuo 0
-					 7 / 2 = 3, residuo 1
-					 3 / 2 = 1, residuo 1
-					 1
-					Lectura inversa: 1110
-				\end{Verbatim}
+		    \begin{Verbatim}[formatcom=\centering]
+		    	14 / 2 = 7, residuo 0
+		    	 7 / 2 = 3, residuo 1
+		    	 3 / 2 = 1, residuo 1
+		    	 1
+		    	Lectura inversa: 1110
+		    \end{Verbatim}
 			\end{center}
 			
 			
-			Resultado binario: 
+			
 			\[
-			14_{10} = 1110_2
+			\text{Resultado binario: }14_{10} = 1110_2
 			\]
 			
 			\subsection*{Determinación del exponente}
@@ -591,24 +593,24 @@
 			\subsection*{Conversión a binario}
 			
 			
-			~~~~~~~~~~~~~~~~~~~~~~~~~\text{Parte entera:} 
-			\begin{center}
-				\begin{Verbatim}[formatcom=\centering]
-					12 / 2 = 6, residuo 0
-					 6 / 2 = 3, residuo 0
-					 3 / 2 = 1, residuo 1
-					 1 
-					Lectura inversa: 1100
-				\end{Verbatim}
+		\text{Parte entera:} 
+	     \begin{center}
+	     	\begin{Verbatim}[formatcom=\centering]
+	     		12 / 2 = 6, residuo 0
+	     		 6 / 2 = 3, residuo 0
+	     		 3 / 2 = 1, residuo 1
+	     		 1 
+	     		Lectura inversa: 1100
+	     	\end{Verbatim}
 			\end{center}
 			
 			\text{Parte decimal: Multiplicamos sucesivamente por 2}
 			
 			\begin{center}
-				\begin{Verbatim}
-					0.5 * 2 = 1.00000 → 1 
-					0.0 * 2 = 0.00000 → 0 
-				\end{Verbatim}
+		     \begin{Verbatim}
+		     	0.5 * 2 = 1.00000 → 1 
+		     	0.0 * 2 = 0.00000 → 0 
+		     \end{Verbatim}
 			\end{center}
 			
 			Resultado binario: 
@@ -737,7 +739,7 @@
 		\subsection*{Conversión a binario}
 		
 		
-		~~~~~~~~~~~~~~~~~~~~~~~~~\text{Parte entera:} 
+		~~~~\text{Parte entera:} 
 		\begin{center}
 			\begin{Verbatim}[formatcom=\centering]
 				6 / 2 = 3, residuo 0
@@ -832,7 +834,7 @@
 	\]
 	
 
-	
+		\vspace{-0.5cm}
 	\subsection*{Reconstrucción del número binario}	
 	\[
 	(-1)^{\text{signo}} \times 2^{\text{exponente}} \times 1.\text{mantisa}
@@ -848,6 +850,8 @@
 	---
 	\end{center}
 
+		\newpage
+		
 		\begin{center}
 		\colorbox{yellow}{\textbf{b.} 0100 0000 0010 1001 0000 0000 0000 0000}
 		
@@ -922,6 +926,7 @@
 		---
 	\end{center}
 
+	\newpage
 	\begin{center}
 		\colorbox{yellow}{\textbf{d.} 1100 0000 1110 0010 0000 0000 0000 0000}
 		
@@ -998,6 +1003,7 @@
 	---
 	\end{center}
 
+	\newpage
 	\begin{center}
 		\colorbox{yellow}{\textbf{f.} 1001 1010 1001 0101 0000 0000 0000 0000}
 		
@@ -1072,6 +1078,7 @@
 		---
 	\end{center}
 
+	\newpage
 	\begin{center}
 		\colorbox{yellow}{\textbf{h.} 1100 1000 0000 0011 0000 0000 0000 0000}
 		
@@ -1204,6 +1211,7 @@
 	---
 	\end{center}
 	%BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+	\newpage
 	\begin{center}
 		\colorbox{yellow}{\textbf{b.} 7F804000}
 		\subsection*{Conversión a binario (32 bits)}
@@ -1507,6 +1515,7 @@
 		---
 	\end{center}
 	%HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh
+	\newpage
 	\begin{center}
 		\colorbox{yellow}{\textbf{h.} 42378000}
 		\subsection*{Conversión a binario (32 bits)}
@@ -1643,6 +1652,7 @@
 		\]
 		\boxed{3_{10}}
 	\end{center}
+	\newpage
 	\begin{center}
 		\colorbox{yellow}{{\textbf{c.} $011100$}}
 		\subsection*{Calculo mediante el teorema fundamental de la numeración}
@@ -1691,6 +1701,7 @@
 		\]
 		\boxed{56_{10}}
 	\end{center}
+	\newpage
 	\begin{center}
 		\colorbox{yellow}{{\textbf{i.} $11110001111$}}
 		\subsection*{Calculo mediante el teorema fundamental de la numeración}
@@ -1738,7 +1749,7 @@
 			\item 23,1
 		\end{enumerate}
 	
-		
+		\newpage
 		\begin{center}
 			\colorbox{yellow}{{\textbf{a.} $64$}}
 			\begin{Verbatim}[formatcom=\centering]
@@ -1792,6 +1803,7 @@
 			\end{Verbatim}
 			\hspace{1.7cm}\boxed{\texttt{Lectura inversa: 10010001}}
 		\end{center}
+		\newpage
 		\begin{center}
 			\colorbox{yellow}{{\textbf{e.} $255$}}
 			\begin{Verbatim}[formatcom=\centering]
@@ -1969,7 +1981,7 @@
 \begin{center}
 	\hspace{2cm}\boxed{\texttt{Número aproximado: 10111.00011001100110011001100}}
 \end{center}
-
+	\newpage
 	6.Convertir los siguientes números enteros hexadecimales en sus equivalentes
 	decimales:
 	\begin{enumerate}
@@ -2776,5 +2788,460 @@
 	\]
 	\end{center}
 	
+	16. Emparejar las siguientes combinaciones binarias de 8 bits con sus valores
+	en base 10 y los sistemas en que se encuentran representadas, justificando
+	las respuestas (¡si algún valor en una columna no puede emparejarse será
+	imprescindible indicarlo explícitamente!):
+	\begin{Verbatim}
+	Combinación binaria		Número en base 10 y sistema utilizado
+	a) 10000111			1) 48 en magnitud y signo       
+	b) 10111011			2) -163 en complemento a 1    
+	c) 10100011			3) -121 en complemento a 2	
+	d) 00110000			4) -96 en binario puro			
+	e) 10000110			5) 95 en complemento a 1		
+	f) 11100111			6) -121 en complemento a 1		
+	g) 11100000			7) 121 en binario puro			
+	h) 11000001			8) -103 en magnitud y signo	
+	i) 01111001			9) -63 en complemento a 2		
+	j) 01011111			10) 187 en complemento a 2   	
+	\end{Verbatim}
 	
+	\begin{center}
+		\colorbox{yellow}{{\textbf{a) 10000111 → 3)  –121 en complemento a 2}}}
+		\[
+		\text{Se le invierten los bits: } 01111000
+		\]
+		\[
+		\text{Se le suma 1: } 01111000 + 1 = 01111001
+		\]
+		\[
+		\boxed{\text{Resultado: } 01111001_2 = 121_{10}}
+		\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{b) 10111011 → No tiene equivalencia }}}
+		\[
+		\text{En binario puro equivale a : } 187
+		\]
+		\[
+		\text{En binario con magnitud y signo equivale a : -35} 
+		\]
+		\[
+		\text{No tiene equivalencia en c1 y c2 por quedar 0 el bit de signo,  resulta ser positivo.}
+		\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{c) 10100011 → No tiene equivalencia }}}
+		\[
+		\text{En binario puro equivale a : } 163
+		\]
+		\[
+		\text{En binario con magnitud y signo equivale a : 59} 
+		\]
+		\[
+		\text{No tiene equivalencia en c1 y c2 por quedar 0 el bit de signo, resulta ser positivo.}
+		\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{d) 00110000 → 1) 48 en magnitud y signo}}}
+		\[
+		\text{No es c1 ni c2 porque si le invirtieran los signos daría negativo por el bit mas significativo } 
+		\]
+		\[
+		\text{El primer bit es 0, por tanto es un número positivo }
+		\]
+		\[
+		{\text{Mediante el teorema fundamental de la numeración: } }
+		\]
+		\[
+		0\times2^{7} + 0\times2^{6} + 1\times2^{5} + 1\times2^{4} + 0\times2^{3} + 0\times2^{2} + 0\times2^{1} + 0\times2^{0}
+		\]
+		\boxed{48_{10}}
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{e) 10000110 → 6) -121 en complemento a 1}}}
+		\[
+		\text{El primer bit de signo es 1, con lo cual es un número negativo }
+		\]
+		\[
+		\text{Se le invierten los bits: } 01111001
+		\]
+		\[
+		{\text{Mediante el teorema fundamental de la numeración: } }
+		\]
+		\[
+		0\times2^{7} + 1\times2^{6} + 1\times2^{5} + 1\times2^{4} + 1\times2^{3} + 0\times2^{2} + 0\times2^{1} + 1\times2^{0} 
+		\]
+		\[ { = 121_{10}} \]	
+		\[
+		\boxed{\text{Resultado en complemento a1: } -121_{10}}
+		\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{f) 11100111 → 8) -103 en magnitud y signo}}}
+		\[
+		\text{No es c1 ni c2 porque si le invirtieran los signos daría negativo por el bit mas significativo } 
+		\]
+		\[
+		\text{El primer bit es 1, por tanto es un número negativo}
+		\]
+		\[
+		{\text{Mediante el teorema fundamental de la numeración: } }
+		\]
+		\[
+		1\times2^{6} + 1\times2^{5} + 0\times2^{4} + 0\times2^{3} + 1\times2^{2} + 1\times2^{1} + 1\times2^{0}
+		\]
+		\boxed{103_{10}}
+		\[
+		\boxed{\text{Resultado en magnitud y signo: } -103_{10}}
+		\]
+	\end{center}
+
+	\begin{center}
+	\colorbox{yellow}{{\textbf{g) 11100000 → No tiene equivalencia }}}
+		\[
+		\text{En binario puro equivale a : } 224
+		\]
+		\[
+		\text{En binario con magnitud y signo equivale a : 96} 
+		\]
+		\[
+		\text{No tiene equivalencia en c1 y c2 por quedar 0 el bit de signo, resulta ser positivo.}
+		\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{h) 11000001 → 9) -63 en complemento a 2}}}
+		\[
+		\text{Se le invierten los bits: } 00111110
+		\]
+		\[
+		\text{Se le suma 1: } 00111110 + 1 = 00111111
+		\]
+		\[
+		\boxed{\text{Resultado: } 00111111_2 = 63_{10}}
+		\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{i) 01111001 → 7) 121 en binario puro}}}
+		\[
+		\text{El primer bit es 0, por tanto es un número positivo }
+		\]
+		\[
+		{\text{Mediante el teorema fundamental de la numeración: } }
+		\]
+		\[
+		0\times2^{7} + 1\times2^{6} + 1\times2^{5} + 1\times2^{4} + 1\times2^{3} + 0\times2^{2} + 0\times2^{1} + 1\times2^{0}
+		\]
+		\boxed{121_{10}}
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{j) 01011111 → 5) 95 en complemento a 1}}}
+		\[
+		\text{El primer bit de signo es 0, con lo cual es un número positivo }
+		\]
+		\[
+		{\text{Mediante el teorema fundamental de la numeración: } }
+		\]
+		\[
+		0\times2^{7} + 1\times2^{6} + 0\times2^{5} + 1\times2^{4} + 1\times2^{3} + 1\times2^{2} + 1\times2^{1} + 1\times2^{0} 
+		\]
+		\[ 
+		\boxed{ 95_{10} } 
+		\]	
+	\end{center}
+
+	17. Emparejar las siguientes combinaciones binarias de 8 bits con sus valores en sus valores en base 10 y los sistemas en que se encuentran representadas, justificando las respuestas (¡si algún valor en una columna no puede emparejarse será imprescindible indicarlo explícitamente!).
+\begin{Verbatim}
+	Combinación binaria 	Número en base 10 y sistema utilizado
+	a) 01100101			1) -73 en complemento a 2
+	b) 10111001			2) 38 en complemento a 1
+	c) 11011111			3) 30 en módulo y signo
+	d) 01001001			4) -13 en complemento a 2
+	e) 00011110			5) 101 en binario puro
+	f) 10010110			6) -95 en módulo y signo
+	g) 00100110			7) -140 en complemento a 1 
+	h) 11001110			8) -71 en complemento a 2
+	i) 01110011			9) -49 en complemento a 1
+	j) 11110011			10)-22 en binario puro
+\end{Verbatim}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{a) 01100101 → 5) 101 en binario puro}}}
+		{\text{Mediante el teorema fundamental de la numeración: } }
+		\[
+		0\times2^{7} + 1\times2^{6} + 1\times2^{5} + 0\times2^{4} + 0\times2^{3} + 1\times2^{2} + 0\times2^{1} + 1\times2^{0}
+		\]
+		\boxed{101_{10}}
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{b) 10111001 → 8) -71 en complemento a 2}}}
+		\[
+		\text{Se le invierten los bits: } 01000110
+		\]
+		\[
+		\text{Se le suma 1: } 01000110 + 1 = 01000111
+		\]
+		\[
+		\boxed{\text{Resultado: } 01000111_2 = 71_{10}}
+		\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{c) 11011111 → 6) -95 en módulo y signo}}}
+		\[
+		\text{No es c1 ni c2 porque si le invirtieran los signos daría negativo por el bit mas significativo } 
+		\]
+		\[
+		\text{El primer bit es 1, por tanto es un número negativo}
+		\]
+		\[
+		{\text{Mediante el teorema fundamental de la numeración: } }
+		\]
+		\[
+		1\times2^{6} + 0\times2^{5} + 1\times2^{4} + 1\times2^{3} + 1\times2^{2} + 1\times2^{1} + 1\times2^{0}
+		\]
+		\boxed{95_{10}}
+		\[
+		\boxed{\text{Resultado en magnitud y signo: } -95_{10}}
+		\]
+	\end{center}
+	
+	
+	
+	
+		\begin{center}
+		\colorbox{yellow}{{\textbf{d) 01001001 → No tiene equivalencia }}}
+		\[
+		\text{En binario puro equivale a : } 73
+		\]
+		\[
+		\text{No tiene equivalencia en c1 y c2 por ser 0 el bit de signo, resulta ser positivo.}
+		\]
+		\end{center}
+	
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{e) 00011110 → 3) 30 en módulo y signo}}}
+		\[
+		\text{No es c1 ni c2 porque si le invirtieran los signos daría negativo por el bit mas significativo } 
+		\]
+		\[
+		\text{El primer bit es 0, por tanto es un número positivo}
+		\]
+		\[
+		{\text{Mediante el teorema fundamental de la numeración: } }
+		\]
+		\[
+		0\times2^{6} + 0\times2^{5} + 1\times2^{4} + 1\times2^{3} + 1\times2^{2} + 1\times2^{1} + 0\times2^{0} 
+		\]
+		\boxed{30_{10}}
+		\[
+		\boxed{\text{Resultado en magnitud y signo: } 30_{10}}
+		\]
+	\end{center}
+
+		\begin{center}
+		\colorbox{yellow}{{\textbf{f) 10010110 → No tiene equivalencia }}}
+		\[
+		\text{En binario puro equivale a : } 150
+		\]
+		\[
+		\text{En binario con magnitud y signo equivale a : -22} 
+		\]
+		\[
+		\text{En complemento a2 equivale a: -106}
+		\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{g) 00100110 → 2) 38 en complemento a 1}}}
+		\[
+		\text{En binario puro equivale a : } 38
+		\]
+		\[
+		\text{En binario con magnitud y signo equivale a : 38} 
+		\]
+		\[
+		\text{En complemento a1 y a2 también se expresa el número : 38} 
+		\]
+	\end{center}
+	
+	\begin{center}
+		\colorbox{yellow}{{\textbf{h) 11001110 → 9) -49 en complemento a 1}}}
+		\[
+		\text{Se le invierten los bits: } 00110001
+		\]
+		\[
+		\boxed{\text{Resultado: } 00110001_2 = 49_{10}}
+		\]
+		\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{i) 01110011 → No tiene equivalencia }}}
+		\[
+		\text{En binario puro equivale a : } 115
+		\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{j) 11110011 → 4) -13 en complemento a 2}}}
+		\[
+		\text{Se le invierten los bits: } 00001100
+		\]
+		\[
+		\text{Se le suma 1: } 00001100 + 1 = 00001101
+		\]
+		\[
+		\boxed{\text{Resultado: } 00001101_2 = 13_{10}}
+		\]
+	\end{center}
+
+	18. Representa los siguientes números decimales en binario signo – magnitud de 8 bits.
+		\begin{enumerate}
+			\item -67 10 
+			\item 68 10
+		\end{enumerate}
+	
+	\begin{center}
+		\colorbox{yellow}{{\textbf{a.} $-67_{10}$}} \\ \vspace{0.3cm}
+		\begin{Verbatim}
+			67 / 2 =   33, residuo 1
+			33 / 2 =   16, residuo 1
+			16 / 2 =    8, residuo 0
+			 8 / 2 =    4, residuo 0
+			 4 / 2 =    2, residuo 0
+			 2 / 2 =    1, residuo 0
+			 1 ------------------> 1
+			
+			Lectura inversa: 1000011
+		\end{Verbatim}
+	\boxed{\text{Resultado: } 11000011_2 = -67_{10}}
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{b.} $68_{10}$}} \\ \vspace{0.3cm}
+		\begin{Verbatim}
+			68 / 2 =   34, residuo 0
+			34 / 2 =   17, residuo 0
+			17 / 2 =    8, residuo 1
+			8 / 2 =    4, residuo 0
+			4 / 2 =    2, residuo 0
+			2 / 2 =    1, residuo 0
+			1 ------------------> 1
+			
+			Lectura inversa: 1000100
+		\end{Verbatim}
+		\boxed{\text{Resultado: } 01000100_2 = 68_{10}}
+	\end{center}
+
+	19. Indica la representación decimal de 10010111(2 sabiendo que está representado en signo y magnitud de 8 bits.
+	\begin{center}
+	\[
+	\text{Primer bit 1 indica numero negativo: }
+	\]
+	\[
+	0\times2^{6} + 0\times2^{5} + 1\times2^{4} + 1\times2^{3} + 1\times2^{2} + 1\times2^{1} + 1\times2^{0}
+	\]
+	\boxed{-23_{10}}
+	\end{center}
+
+	20. Indica la representación decimal de 00110101(2 sabiendo que está representado en signo y magnitud de 8 bits.
+	\begin{center}
+		\[
+		\text{Primer bit 0 indica numero positivo: }
+		\]
+		\[
+		0\times2^{6} + 1\times2^{5} + 1\times2^{4} + 0\times2^{3} + 1\times2^{2} + 0\times2^{1} + 1\times2^{0}
+		\]
+		\boxed{53_{10}}
+	\end{center}
+
+	21. Hallar el complemento a 1 y el complemento a 2 de los siguientes números binarios:
+	\begin{enumerate}
+		\item 01110110
+		\item 01010101
+		\item 01111110
+		\item 11111000
+		\item 00011011
+	\end{enumerate}
+	
+	\begin{center}
+	\colorbox{yellow}{{\textbf{a) 01110110 }}}
+	\[
+	\text{Complemento a1 invirtiendo los bits: } 10001001
+	\]
+	\[
+	\text{Complemento a2 sumandole 1: } 10001001 + 1 = 10001010
+	\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{b) 01010101 }}}
+		\[
+		\text{Complemento a1 invirtiendo los bits: } 10101010
+		\]
+		\[
+		\text{Complemento a2 sumandole 1: } 10101010 + 1 = 10101011
+		\]
+	\end{center}
+
+	\begin{center}
+		\colorbox{yellow}{{\textbf{c) 01111110 }}}
+		\[
+		\text{Complemento a1 invirtiendo los bits: } 10000001
+		\]
+		\[
+		\text{Complemento a2 sumandole 1: } 10000001 + 1 = 10000010
+		\]
+	\end{center}
+
+		\begin{center}
+		\colorbox{yellow}{{\textbf{d) 11111000 }}}
+		\[
+		\text{Complemento a1 invirtiendo los bits: } 00000111
+		\]
+		\[
+		\text{Complemento a2 sumandole 1: } 00000111 + 1 = 00001000
+		\]
+	\end{center}
+
+		\begin{center}
+		\colorbox{yellow}{{\textbf{e) 00011011 }}}
+		\[
+		\text{Complemento a1 invirtiendo los bits: } 11100100
+		\]
+		\[
+		\text{Complemento a2 sumandole 1: } 11100100 + 1 = 11100101
+		\]
+	\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
 \end{document}
