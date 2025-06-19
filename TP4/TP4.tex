@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[edges]{forest}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\setlength{\headheight}{15pt}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xparse}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usepackage[a4paper, top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{INSPT - UTN}
+\lhead{Jonatan Imperi}
+\cfoot{\thepage}
+\renewcommand{\theenumi}{\alph{enumi}}
+
+\begin{document}
+	\begin{center}
+		
+		\LARGE \textbf{Sistemas de computación 1} \\[0.5cm]
+		\LARGE Trabajo práctico n° 4 \\
+	\end{center}	
+
+	\section*{Código de Hamming y código de Huffmann}
+	
+	1. Obtener la codificación de Hauffman, el árbol binario y el porcentaje de compresión
+	de los siguientes strings:
+	\begin{enumerate}
+	\item hauffmanyhamming
+	\item hola mundo
+	\item dddrdddrdrr
+	\item anita lava la tina
+	\item ccbcbbbcbbb
+	\item FFCE FEEF EFED EFFF EDEF EEFE DEFE FFFF FDFF BFFC FDFF FEAE DCDE
+	%\item (tu nombre y apellido) Ej: maria laura frette
+	%\item CATCATCATCAT
+	%\item ❤❤❤❤❤❤ ⚽⚽⚽⚽ 🔺🔺🔺 ❌ ❌❌❌❌❌
+	%\item 🦀🦀🦀🦀🦀🦀🦀🎄🎄🎄 🐭🐭🐶🐶🐶🐶🐶
+	\end{enumerate}
+
+	\begin{forest}
+		for tree={
+			draw,rounded corners,minimum size=7mm,inner sep=2pt,
+			l sep=15mm, % separación entre hermanos
+			s sep=15mm,  % separación entre niveles
+			if n children=0{fill=yellow!30}{}
+		}
+		[N8: 16 
+			[N6: 7, edge label={node[midway, left]{0}} 
+				[a, edge label={node[midway, left]{0}}]
+				[N3: 4, edge label={node[midway, right]{1}}  
+					[f, edge label={node[midway, left]{0}}] [n, edge label={node[midway, right]{1}}] 
+				]
+			]	
+			[N7: 9, edge label={node[midway, right]{1}}
+				[N4: 4, edge label={node[midway, left]{0}}
+					[h, edge label={node[midway, left]{0}}]
+					[N1: 2, edge label={node[midway, right]{1}}
+						[i, edge label={node[midway, left]{0}}]
+						[g, edge label={node[midway, right]{1}}]
+					]	
+				]
+				[N5: 5, edge label={node[midway, right]{1}}
+					[m, edge label={node[midway, left]{0}}]
+					[N2: 2, edge label={node[midway, right]{1}}
+						[u, edge label={node[midway, left]{0}}]
+						[y, edge label={node[midway, right]{1}}]
+					]
+				]
+			]
+		]
+	\end{forest}
+
+
+	
+\end{document}
