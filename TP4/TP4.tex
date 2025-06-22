@@ -16,7 +16,7 @@
 \usepackage{textcomp}
 \usepackage{tikz}
 \usepackage[a4paper, top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
-
+\usepackage{emoji}
 
 
 \pagestyle{fancy}
@@ -30,9 +30,10 @@
 	\begin{center}
 		
 		\LARGE \textbf{Sistemas de computación 1} \\[0.5cm]
+
 		\LARGE Trabajo práctico n° 4 \\
 	\end{center}	
-
+	
 	\section*{Código de Hamming y código de Huffmann}
 	
 	1. Obtener la codificación de Hauffman, el árbol binario y el porcentaje de compresión
@@ -46,8 +47,8 @@
 	\item FFCE FEEF EFED EFFF EDEF EEFE DEFE FFFF FDFF BFFC FDFF FEAE DCDE
 	\item (tu nombre y apellido) Ej: maria laura frette
 	\item CATCATCATCAT
-	%\item ❤❤❤❤❤❤ ⚽⚽⚽⚽ 🔺🔺🔺 ❌ ❌❌❌❌❌
-	%\item 🦀🦀🦀🦀🦀🦀🦀🎄🎄🎄 🐭🐭🐶🐶🐶🐶🐶
+	\item \emoji{red-heart}\emoji{red-heart}\emoji{red-heart}\emoji{red-heart}\emoji{red-heart}\emoji{red-heart}\emoji{soccer-ball}\emoji{soccer-ball}\emoji{soccer-ball}\emoji{soccer-ball}\emoji{red-triangle-pointed-up}\emoji{red-triangle-pointed-up}\emoji{red-triangle-pointed-up}\emoji{cross-mark}\emoji{cross-mark}\emoji{cross-mark}\emoji{cross-mark}\emoji{cross-mark}\emoji{cross-mark}
+	\item \emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{christmas-tree}\emoji{christmas-tree}\emoji{christmas-tree}\emoji{mouse-face}\emoji{mouse-face}\emoji{dog-face}\emoji{dog-face}\emoji{dog-face}\emoji{dog-face}\emoji{dog-face} 
 	\end{enumerate}
 
 	\vspace{0.5cm}
@@ -487,11 +488,155 @@
 		\subsection*{Tasa de compresión: 98 bits / 48 bits = 2.04}	
 	\end{center}
 	
+	%HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+	\vspace{0.5cm}
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{h.} CATCATCATCAT}}\newline
+		\subsection*{Total: 12 caracteres x 7 bits = 84 bits}
+		\vspace{0.5cm}
+		\subsection*{Conteo de caracteres}
+		\begin{tabular}{c|c}
+			\textbf{Caracter} & \textbf{Frecuencia} \\
+			\hline
+			C & 4 \\
+			A & 4 \\
+			T & 4 \\
+		\end{tabular}
+		
+		\vspace{1cm}
+		
+		\begin{forest}
+			for tree={
+				parent anchor=south,
+				child anchor=north,
+				draw,
+				l sep=10mm,
+				s sep=5mm,
+				minimum size=8mm
+			}
+			[N2:12
+			[N1:8, edge label={node[midway, left]{0}}
+			[C, tier=word,edge label={node[midway, left]{0}}]
+			[A, tier=word,edge label={node[midway, right]{1}}]
+			]
+			[T, tier=word,edge label={node[midway, right]{1}}]
+			]
+		\end{forest}
+		
+		
+		\subsection*{Codificación resultante}
+		\begin{tabular}{c|c|c|c}
+			\textbf{Caracter} & \textbf{Frecuencia} & \textbf{Código} & \textbf{Uso de bits}\\
+			\hline
+			C & 4 & 00 & 8\\
+			A & 4 & 01 & 8\\
+			T & 4 & 1 & 4\\
+		\end{tabular}
+		\subsection*{Tasa de compresión: 84 bits / 20 bits = 4.2}	
+	\end{center}
 	
+	%IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+	\vspace{0.5cm}
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{i.} \emoji{red-heart}\emoji{red-heart}\emoji{red-heart}\emoji{red-heart}\emoji{red-heart}\emoji{red-heart}\emoji{soccer-ball}\emoji{soccer-ball}\emoji{soccer-ball}\emoji{soccer-ball}\emoji{red-triangle-pointed-up}\emoji{red-triangle-pointed-up}\emoji{red-triangle-pointed-up}\emoji{cross-mark}\emoji{cross-mark}\emoji{cross-mark}\emoji{cross-mark}\emoji{cross-mark}\emoji{cross-mark}}}\newline
+		\subsection*{Total: 21 caracteres x 32 bits = 672 bits}
+		\vspace{0.5cm}
+		\subsection*{Conteo de caracteres}
+		\begin{tabular}{c|c}
+			\textbf{Caracter} & \textbf{Frecuencia} \\
+			\hline
+			\emoji{red-heart} & 6 \\
+			\emoji{cross-mark} & 6 \\
+			\emoji{soccer-ball} & 4 \\
+			\emoji{red-triangle-pointed-up} & 3 \\
+		\end{tabular}
+		
+		\vspace{1cm}
+		\begin{forest}
+			for tree={
+				parent anchor=south,
+				child anchor=north,
+				draw,
+				l sep=10mm,
+				s sep=5mm,
+				minimum size=8mm
+			}
+			[N3:19
+				[N1:7, edge label={node[midway,left]{0}}
+					[{\emoji{red-triangle-pointed-up}}, edge label={node[midway, left]{0}}]
+					[{\emoji{soccer-ball}}, edge label={node[midway, right]{1}}]
+				]
+				[N2:12, edge label={node[midway,right]{1}}
+					[{\emoji{cross-mark}}, edge label={node[midway, left]{0}}]
+					[{\emoji{red-heart}}, edge label={node[midway, right]{1}}]
+				]
+			]
+		\end{forest}
+
+		\subsection*{Codificación resultante}
+		\begin{tabular}{c|c|c|c}
+			\textbf{Caracter} & \textbf{Frecuencia} & \textbf{Código} & \textbf{Uso de bits}\\
+			\hline
+			\emoji{red-heart} & 6 & 11 & 12\\
+			\emoji{cross-mark} & 6 & 10 & 12\\
+			\emoji{soccer-ball} & 4 & 01 & 8\\
+			\emoji{red-triangle-pointed-up} & 3 & 00 & 6\\
+		\end{tabular}
+		\subsection*{Tasa de compresión: 672 bits / 38 bits = 17.68}	
+	\end{center}
 	
-	
-	
-	
+	%JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{\textbf{j.}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{christmas-tree}\emoji{christmas-tree}\emoji{christmas-tree}\emoji{mouse-face}\emoji{mouse-face}\emoji{dog-face}\emoji{dog-face}\emoji{dog-face}\emoji{dog-face}\emoji{dog-face}} % Solo esto en color
+		\newline
+		
+		\subsection*{Total: 17 caracteres x 32 bits = 544 bits}
+		\vspace{0.5cm}
+		
+		\subsection*{Conteo de caracteres}
+		\begin{tabular}{c|c}
+			\textbf{Caracter} & \textbf{Frecuencia} \\
+			\hline
+			\emoji{crab} & 7 \\
+			\emoji{dog-face} & 5 \\
+			\emoji{christmas-tree} & 3 \\
+			\emoji{mouse-face} & 2 \\
+		\end{tabular}
+		
+		\vspace{1cm}
+		\begin{forest}
+			for tree={
+				parent anchor=south,
+				child anchor=north,
+				draw,
+				l sep=10mm,
+				s sep=5mm,
+				minimum size=8mm
+			}
+			[N3:17
+			[N2:10, edge label={node[midway,left]{0}}
+			[N1:5, edge label={node[midway,left]{0}}
+			[\emoji{mouse-face}, tier=word, edge label={node[midway, left]{0}}]
+			[\emoji{christmas-tree}, tier=word, edge label={node[midway, right]{1}}]
+			]
+			[\emoji{dog-face}, tier=word, edge label={node[midway, right]{1}}]	
+			]
+			[\emoji{crab}, tier=word, edge label={node[midway, right]{1}}]
+			]
+		\end{forest}
+		
+		\subsection*{Codificación resultante}
+		\begin{tabular}{c|c|c|c}
+			\textbf{Caracter} & \textbf{Frecuencia} & \textbf{Código} & \textbf{Uso de bits}\\
+			\hline
+			\emoji{crab} & 7 & 1 & 7\\
+			\emoji{dog-face} & 5 & 01 & 10\\
+			\emoji{christmas-tree} & 3 & 001 & 9\\
+			\emoji{mouse-face} & 2 & 000 & 6\\
+		\end{tabular}
+		
+		\subsection*{Tasa de compresión: 544 bits / 32 bits = 17}	
+	\end{center}
 	
 	
 	
