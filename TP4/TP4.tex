@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage[edges]{forest}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage{fancyhdr}
@@ -12,11 +12,12 @@
 \usepackage{xparse}
 \usepackage{enumitem}
 \usepackage{float}
-\usepackage[utf8]{inputenc}
 \usepackage{textcomp}
 \usepackage{tikz}
 \usepackage[a4paper, top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 \usepackage{emoji}
+\usepackage{booktabs}
+\usepackage{array}
 
 
 \pagestyle{fancy}
@@ -638,15 +639,74 @@
 		\subsection*{Tasa de compresión: 544 bits / 32 bits = 17}	
 	\end{center}
 	
+
+	2. Halle los bits de paridad en base a los datos transmitidos utilizando el codigo de Hamming.
+	\begin{enumerate}
+	\item 101010101
+	\item 10111001
+	\item 0101001
+	\item 10101
+	\item 10001
+	\end{enumerate}
 	
+	\newpage
+	\begin{center}
+	\hspace{3cm}\colorbox{yellow}{{\textbf{a.} 101010101}}\newline
+	\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+	\[
+	2^p \geq p + \text{bits de datos} + 1
+	\quad \Rightarrow \quad	2^4 \geq 4 + 9 + 1 \quad \Rightarrow \quad 16 \geq 14
+	\]
 	
-	
-	
-	
-	
-	
-	
-	
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{c|cccccccccccccc}
+			\toprule
+			\textbf{Datos/bits} & \textbf{p1} & \textbf{p2} & \textbf{1} & \textbf{p3} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{p4} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{1}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111 & \scriptsize1000 & \scriptsize1001 & \scriptsize1010 & \scriptsize1011 & \scriptsize1100 & \scriptsize1011 \\
+			\midrule
+			\textbf{p1} & \colorbox{pink}{0} & & 1 & & 0 & & 0 & & 1 & & 1 & & 1 \\
+			\midrule
+			\textbf{p2} &  & \colorbox{pink}{1} & 1 & & & 1 & 0 & & & 0 & 1 & &  \\
+			\midrule
+			\textbf{p3} &  & & & \colorbox{pink}{0} & 0 & 1 & 0 & & & & & 0 & 1 \\
+			\midrule
+			\textbf{p4} & & & & & & & & \colorbox{pink}{1} & 1 & 0 & 1 & 0 & 1 \\
+			\midrule
+			\midrule
+			\textbf{Resultado} & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 1 \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	\end{center}	
+	%222222222bbbbbbbbbbbbbbbbbbbb
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{b.} 10111001}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^4 \geq 4 + 8 + 1 \quad \Rightarrow \quad 16 \geq 13
+		\]
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{p1} & \textbf{p2} & \textbf{1} & \textbf{p3} & \textbf{0} & \textbf{1} & \textbf{1} & \textbf{p4} & \textbf{1} & \textbf{0} & \textbf{0} & \textbf{1} \\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111 & \scriptsize1000 & \scriptsize1001 & \scriptsize1010 & \scriptsize1011 & \scriptsize1100 \\
+				\midrule
+				\textbf{p1} & \colorbox{pink}{1} & & 1 & & 0 & & 1 & & 1 & & 0 &\\
+				\midrule
+				\textbf{p2} &  & \colorbox{pink}{1} & 1 & & & 1 & 1 & & & 0 & 0 &  \\
+				\midrule
+				\textbf{p3} &  & & & \colorbox{pink}{1} & 0 & 1 & 1 & & & & & 1 \\
+				\midrule
+				\textbf{p4} & & & & & & & & \colorbox{pink}{0} & 1 & 0 & 0 & 1 \\
+				\midrule
+				\midrule
+				\textbf{Resultado} & 1 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 1 \\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
 	
 	
 	
