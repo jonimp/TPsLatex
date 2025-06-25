@@ -1,6 +1,5 @@
 \documentclass{article}
 \usepackage[edges]{forest}
-%\usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage{fancyhdr}
@@ -18,7 +17,7 @@
 \usepackage{emoji}
 \usepackage{booktabs}
 \usepackage{array}
-
+\usepackage{tabularx}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -26,6 +25,24 @@
 \lhead{Jonatan Imperi}
 \cfoot{\thepage}
 \renewcommand{\theenumi}{\alph{enumi}}
+
+\NewDocumentCommand{\Xor}{m m m o}{
+	\begin{minipage}{0.35\linewidth}
+		\centering
+		\[
+		\renewcommand{\arraystretch}{1.2}
+		\begin{array}{l@{\quad}l}
+			& \texttt{#1} \\
+			& \texttt{#2} \\
+			\text{Xor} & \texttt{#3} \\
+			\hline
+			& \IfValueT{#4}{\texttt{#4}}
+		\end{array}
+		\]
+	\end{minipage}
+}
+
+
 
 \begin{document}
 	\begin{center}
@@ -794,5 +811,260 @@
 			\end{tabular}
 		\end{table}
 	\end{center}
+	%3333333333333333333333333333333AAAAAAAAAAAAAAAAAAAAAA
+	3. Determina los bits de paridad y forma el mensaje codificado utilizando el codigo de
+	Hamming.
+	\begin{enumerate}
+	\item Mensaje original: 1101
+	\item Mensaje original: 1010
+	\item Mensaje original: 0110
+	\item Mensaje original: 1110
+	\item Mensaje original: 0101
+	\end{enumerate}
 	
+	%33333333333333333333333AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{a.} 1101}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^3 \geq 3 + 4 + 1 \quad \Rightarrow \quad 8 \geq 8
+		\]
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{p1} & \textbf{p2} & \textbf{1} & \textbf{p3} & \textbf{1} & \textbf{0} & \textbf{1}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111\\
+				\midrule
+				\textbf{p1} & \colorbox{pink}{1} & & 1 & & 1 & & 1\\
+				\midrule
+				\textbf{p2} &  & \colorbox{pink}{0} & 1 & & 0 & 1  \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{pink}{0} & 1 & 0 & 1 \\
+				\midrule
+				\textbf{Resultado} & 1 & 0 & 1 & 0 & 1 & 0 & 1\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
+	
+	%33333333333333333333333333333333333333333333333BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+		\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{b.} 1010}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^3 \geq 3 + 4 + 1 \quad \Rightarrow \quad 8 \geq 8
+		\]
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{p1} & \textbf{p2} & \textbf{1} & \textbf{p3} & \textbf{0} & \textbf{1} & \textbf{0}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111\\
+				\midrule
+				\textbf{p1} & \colorbox{pink}{1} & & 1 & & 0 & & 0\\
+				\midrule
+				\textbf{p2} &  & \colorbox{pink}{0} & 1 & & 1 & 0  \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{pink}{1} & 0 & 1 & 0 \\
+				\midrule
+				\textbf{Resultado} & 1 & 0 & 1 & 1 & 0 & 1 & 0\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
+	%3333333333333333333333CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+		\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{c.} 0110}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^3 \geq 3 + 4 + 1 \quad \Rightarrow \quad 8 \geq 8
+		\]
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{p1} & \textbf{p2} & \textbf{1} & \textbf{p3} & \textbf{0} & \textbf{1} & \textbf{0}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111\\
+				\midrule
+				\textbf{p1} & \colorbox{pink}{1} & & 0 & & 1 & & 0\\
+				\midrule
+				\textbf{p2} &  & \colorbox{pink}{1} & 0 & & 1 & 0  \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{pink}{0} & 1 & 1 & 0 \\
+				\midrule
+				\textbf{Resultado} & 1 & 1 & 0 & 0 & 1 & 1 & 0\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
+	%3333333333333333333333333DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDddd
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{d.} 1110}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^3 \geq 3 + 4 + 1 \quad \Rightarrow \quad 8 \geq 8
+		\]
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{p1} & \textbf{p2} & \textbf{1} & \textbf{p3} & \textbf{1} & \textbf{1} & \textbf{0}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111\\
+				\midrule
+				\textbf{p1} & \colorbox{pink}{0} & & 1 & & 1 & & 0\\
+				\midrule
+				\textbf{p2} &  & \colorbox{pink}{0} & 1 & & 1 & 0  \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{pink}{0} & 1 & 1 & 0 \\
+				\midrule
+				\textbf{Resultado} & 0 & 0 & 1 & 0 & 1 & 1 & 0\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
+	%33333333333333333333333333333333333333333333EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{e.} 0101}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 5
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^5 \geq 3 + 4 + 1 \quad \Rightarrow \quad 8 \geq 8
+		\]
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{p1} & \textbf{p2} & \textbf{0} & \textbf{p3} & \textbf{1} & \textbf{0} & \textbf{1}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111\\
+				\midrule
+				\textbf{p1} & \colorbox{pink}{1} & & 0 & & 1 & & 0\\
+				\midrule
+				\textbf{p2} &  & \colorbox{pink}{1} & 0 & & 0 & 1 \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{pink}{0} & 1 & 0 & 1 \\
+				\midrule
+				\textbf{Resultado} & 0 & 1 & 0 & 0 & 1 & 0 & 1\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+		
+		
+	\end{center}
+
+	4. El dato recibido por un MODEM y protegido mediante código Hamming es el siguiente:011100110101010110 Se pide:
+	\begin{enumerate}
+	 \item Calcular si el número recibido es correcto.
+	 \item Si no es correcto, corregir el número.
+	\end{enumerate} 
+	
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{dato recibido:} 011100110101010110}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^5 \geq 5 + 14 + 1 \quad \Rightarrow \quad 32 \geq 20
+		\]
+	\end{center}
+	
+	
+	\begin{table}[h!]
+		\footnotesize % o \scriptsize para reducir un poco
+		\setlength{\tabcolsep}{4pt} % reduce separación entre columnas
+		\begin{tabularx}{\textwidth}{c|*{18}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{Datos/bits} & \textbf{0} & \textbf{1} & \textbf{1} & \textbf{1} & \textbf{0} & \textbf{0} & \textbf{1} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{1} & \textbf{0} \\
+			& \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111 & \scriptsize1000 & \scriptsize1001 & \scriptsize1010 & \scriptsize1011 & \scriptsize1100 & \scriptsize1101 & \scriptsize1110 & \scriptsize1111 & \scriptsize10000 & \scriptsize10001 & \scriptsize10010\\
+			\midrule
+			\textbf{} & p1 & p2 & & p3 & & & & p4 & & & & & & & & p5 & &  \\
+			\midrule
+			\textbf{p1} & \colorbox{red}{1} & & 1 & & 0 & & 1 & & 0 & & 0 & & 0 & & 0 & & 1 &  \\
+			\midrule
+			\textbf{p2} &  & \colorbox{red}{0} & 1 & & & 0 & 1 & & & 1 & 0 & & & 1 & 0 & & & 0 \\
+			\midrule
+			\textbf{p3} & & & & \colorbox{green}{1} & 0 & 0 & 1 & & & & & 1 & 0 & 1 & 0 & & & \\
+			\midrule
+			\textbf{p4} & & & & & & & & \colorbox{green}{1} & 0 & 1 & 0 & 1 & 0 & 1 & 0 & & & \\
+			\midrule
+			\textbf{p5} & & & & & & & & &  &  &  &  &  &  &  & \colorbox{green}{1} & 1 & 0\\
+			\midrule
+			\textbf{Resultado} & & & & & & & & &  &  &  &  &  &  &  &  &  & \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	\begin{center}
+		\vspace{0.5cm}
+		\Xor{p1~p2~p3~p4}{0~~1~~1~~1}{1~~0~~1~~1}[1~~1~~0~~0]\\
+	\end{center}	
+	\vspace{0.5cm}
+	Leyendo el resultado en orden inverso nos queda 0011 que equivale al número 3, ese es el bit recibido con error.\\
+	Dato recibido: 01\colorbox{red}{1}100110101010110\\
+	Dato corregido 10\colorbox{green}{0}100110101010110\\
+		
+
+	5. Se tiene un computador conectado a una red telefónica por la que llegan números en
+	coma flotante relativos a las temperaturas en una cámara frigorífica de carnes. Los
+	datos vienen protegidos mediante código Hamming. A nuestro terminal ha llegado
+	el dato siguiente: 0 1 1 1 0 0 1 1 0 1 0 1 0 1 0 1 1 0
+	Se pide: Verificar si el número llega correctamente y si fuese necesario realizar la
+	corrección correspondiente.
+
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{dato recibido:} 011100110101010110}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^5 \geq 5 + 14 + 1 \quad \Rightarrow \quad 32 \geq 20
+		\]
+	\end{center}
+	
+	
+	\begin{table}[h!]
+		\footnotesize % o \scriptsize para reducir un poco
+		\setlength{\tabcolsep}{4pt} % reduce separación entre columnas
+		\begin{tabularx}{\textwidth}{c|*{18}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{Datos/bits} & \textbf{0} & \textbf{1} & \textbf{1} & \textbf{1} & \textbf{0} & \textbf{0} & \textbf{1} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{1} & \textbf{0} \\
+			& \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111 & \scriptsize1000 & \scriptsize1001 & \scriptsize1010 & \scriptsize1011 & \scriptsize1100 & \scriptsize1101 & \scriptsize1110 & \scriptsize1111 & \scriptsize10000 & \scriptsize10001 & \scriptsize10010\\
+			\midrule
+			\textbf{} & p1 & p2 & & p3 & & & & p4 & & & & & & & & p5 & &  \\
+			\midrule
+			\textbf{p1} & \colorbox{red}{1} & & 1 & & 0 & & 1 & & 0 & & 0 & & 0 & & 0 & & 1 &  \\
+			\midrule
+			\textbf{p2} &  & \colorbox{red}{0} & 1 & & & 0 & 1 & & & 1 & 0 & & & 1 & 0 & & & 0 \\
+			\midrule
+			\textbf{p3} & & & & \colorbox{green}{1} & 0 & 0 & 1 & & & & & 1 & 0 & 1 & 0 & & & \\
+			\midrule
+			\textbf{p4} & & & & & & & & \colorbox{green}{1} & 0 & 1 & 0 & 1 & 0 & 1 & 0 & & & \\
+			\midrule
+			\textbf{p5} & & & & & & & & &  &  &  &  &  &  &  & \colorbox{green}{1} & 1 & 0\\
+			\midrule
+			\textbf{Resultado} & & & & & & & & &  &  &  &  &  &  &  &  &  & \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	\begin{center}
+		\vspace{0.5cm}
+		\Xor{p1~p2~p3~p4}{0~~1~~1~~1}{1~~0~~1~~1}[1~~1~~0~~0]\\
+	\end{center}	
+		\vspace{0.5cm}
+		Leyendo el resultado en orden inverso nos queda 0011 que equivale al número 3, ese es el bit recibido con error.\\
+		Dato recibido: 01\colorbox{red}{1}100110101010110\\
+		Dato corregido 10\colorbox{green}{0}100110101010110\\
+	
+
+
+
+
+
+
+
+
+
 \end{document}
