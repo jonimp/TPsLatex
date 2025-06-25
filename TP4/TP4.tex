@@ -707,9 +707,92 @@
 			\end{tabular}
 		\end{table}
 	\end{center}
-	
-	
-	
-	
+	%222222222222222222222cccccccccccccccccccccccccccccccccccccccc
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{c.} 0101001}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^4 \geq 4 + 7 + 1 \quad \Rightarrow \quad 16 \geq 11
+		\]
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{p1} & \textbf{p2} & \textbf{0} & \textbf{p3} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{p4} & \textbf{0} & \textbf{0} & \textbf{1} \\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111 & \scriptsize1000 & \scriptsize1001 & \scriptsize1010 & \scriptsize1011 \\
+				\midrule
+				\textbf{p1} & \colorbox{pink}{1} & & 0 & & 1 & & 1 & & 0 & & 0 \\
+				\midrule
+				\textbf{p2} &  & \colorbox{pink}{0} & 0 & & & 0 & 0 & & & 0 &  \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{pink}{1} & 1 & 0 & 1 & & & & 1 \\
+				\midrule
+				\textbf{p4} & & & & & & & & \colorbox{pink}{1} & 0 & 0 & 1 \\
+				\midrule
+				\midrule
+				\textbf{Resultado} & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
+	%2222222222222222222222ddddddddddddddddddddddddddddddddddddddddddddddddddddd
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{d.} 10101}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^4 \geq 4 + 5 + 1 \quad \Rightarrow \quad 16 \geq 10
+		\]
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{p1} & \textbf{p2} & \textbf{1} & \textbf{p3} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{p4} & \textbf{1}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111 & \scriptsize1000 & \scriptsize1001\\
+				\midrule
+				\textbf{p1} & \colorbox{pink}{0} & & 1 & & 0 & & 0 & & 1\\
+				\midrule
+				\textbf{p2} &  & \colorbox{pink}{0} & 1 & & & 1 & 0 & & \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{pink}{1} & 0 & 1 & 0 & & \\
+				\midrule
+				\textbf{p4} & & & & & & & & \colorbox{pink}{1} & 1\\
+				\midrule
+				\midrule
+				\textbf{Resultado} & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
+	%222222222222222222222222222222222222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{e.} 10001}}\newline
+		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
+		\[
+		2^p \geq p + \text{bits de datos} + 1
+		\quad \Rightarrow \quad	2^4 \geq 4 + 5 + 1 \quad \Rightarrow \quad 16 \geq 10
+		\]
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{p1} & \textbf{p2} & \textbf{1} & \textbf{p3} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{p4} & \textbf{1}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111 & \scriptsize1000 & \scriptsize1001\\
+				\midrule
+				\textbf{p1} & \colorbox{pink}{0} & & 1 & & 0 & & 0 & & 1\\
+				\midrule
+				\textbf{p2} &  & \colorbox{pink}{1} & 1 & & & 0 & 0 & & \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{pink}{0} & 0 & 0 & 0 & & \\
+				\midrule
+				\textbf{p4} & & & & & & & & \colorbox{pink}{1} & 1\\
+				\midrule
+				\midrule
+				\textbf{Resultado} & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
 	
 \end{document}
