@@ -311,6 +311,7 @@
 	\end{center}
 	
 	%EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe
+	\newpage
 	\vspace{0.5cm}
 	\begin{center}
 		\hspace{3cm}\colorbox{yellow}{{\textbf{e.} ccbcbbbcbbb}}\newline
@@ -569,7 +570,7 @@
 			\emoji{red-triangle-pointed-up} & 3 \\
 		\end{tabular}
 		
-		\vspace{1cm}
+		\vspace{0.5cm}
 		\begin{forest}
 			for tree={
 				parent anchor=south,
@@ -604,6 +605,7 @@
 	\end{center}
 	
 	%JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+	\newpage
 	\begin{center}
 		\hspace{3cm}\colorbox{yellow}{\textbf{j.}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{crab}\emoji{christmas-tree}\emoji{christmas-tree}\emoji{christmas-tree}\emoji{mouse-face}\emoji{mouse-face}\emoji{dog-face}\emoji{dog-face}\emoji{dog-face}\emoji{dog-face}\emoji{dog-face}} % Solo esto en color
 		\newline
@@ -754,6 +756,7 @@
 		\end{table}
 	\end{center}
 	%2222222222222222222222ddddddddddddddddddddddddddddddddddddddddddddddddddddd
+	\newpage
 	\begin{center}
 		\hspace{3cm}\colorbox{yellow}{{\textbf{d.} 10101}}\newline
 		\\Determinar cuantos bits de paridad se necesitan, se prueba con 4
@@ -812,6 +815,8 @@
 		\end{table}
 	\end{center}
 	%3333333333333333333333333333333AAAAAAAAAAAAAAAAAAAAAA
+	\vspace{1cm}
+	\newpage
 	3. Determina los bits de paridad y forma el mensaje codificado utilizando el codigo de
 	Hamming.
 	\begin{enumerate}
@@ -1006,7 +1011,7 @@
 	Dato recibido: 01\colorbox{red}{1}100110101010110\\
 	Dato corregido 10\colorbox{green}{0}100110101010110\\
 		
-
+	\vspace{1cm}
 	5. Se tiene un computador conectado a una red telefónica por la que llegan números en
 	coma flotante relativos a las temperaturas en una cámara frigorífica de carnes. Los
 	datos vienen protegidos mediante código Hamming. A nuestro terminal ha llegado
@@ -1049,22 +1054,343 @@
 		\end{tabularx}
 	\end{table}
 	
-	\begin{center}
+		\begin{center}
 		\vspace{0.5cm}
 		\Xor{p1~p2~p3~p4}{0~~1~~1~~1}{1~~0~~1~~1}[1~~1~~0~~0]\\
 	\end{center}	
-		\vspace{0.5cm}
-		Leyendo el resultado en orden inverso nos queda 0011 que equivale al número 3, ese es el bit recibido con error.\\
-		Dato recibido: 01\colorbox{red}{1}100110101010110\\
-		Dato corregido 10\colorbox{green}{0}100110101010110\\
+	\vspace{0.5cm}
+	Leyendo el resultado en orden inverso nos queda 0011 que equivale al número 3, ese es el bit recibido con error.\\
+	Dato recibido: 01\colorbox{red}{1}100110101010110\\
+	Dato corregido 10\colorbox{green}{0}100110101010110\\
+	\newpage
 	
+	6. Dado el siguiente árbol binario, obtener el código de Hauffman una de las variantes posibles de string.	
+	\begin{center}
+	\begin{forest}
+		for tree={
+			parent anchor=south,
+			child anchor=north,
+			draw,
+			l sep=8mm,
+			s sep=5mm,
+			minimum size=8mm,
+			fill=cyan!30, % color de fondo para todos los nodos
+			fill=cyan!30, % color de fondo para todos los nodos
+			if n children=0{ % Si el nodo es hoja
+				tier=word,
+			}{
+				shape=circle, % si NO es hoja, lo hace circular
+			},
+		}
+		[15
+			[C:6, tier=word, edge label={node[midway, left]{0}}
+			]
+			[9, edge label={node[midway,right]{1}}
+				[4, edge label={node[midway,left]{0}}
+					[B:1, tier=word, edge label={node[midway, left]{0}}]
+					[D:3, tier=word, edge label={node[midway, right]{1}}]
+				]	
+					[A:5, tier=word, edge label={node[midway, right]{1}}]		
+				]
+		]			
+	\end{forest}
+	\end{center}
+	\vspace{0.5cm}
+	\begin{minipage}{0.5\textwidth}
+	\begin{tabular}{c|c|c|c}
+		\textbf{Caracter} & \textbf{Frecuencia} & \textbf{Código} \\
+		\hline
+		B & 1 & 100 \\
+		D & 3 & 101 \\
+		A & 5 & 11  \\
+		C & 6 & 0   \\
+	\end{tabular}
+	\end{minipage}
+	\begin{minipage}{0.5\textwidth}
+	Posible String: ABCDACDACDACACC
+	\end{minipage}
+	\vspace{1cm}
+	
+	7. Construya el arbol de Hauffman con las siguientes frecuencias:
+	\vspace{0.5cm}
+	\begin{center}
+	\noindent
+	\begin{minipage}{0.3\textwidth}
+		\begin{tabular}{c|c}
+			A & 15 \\
+			B & 6  \\
+			C & 7  \\
+		\end{tabular}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.3\textwidth}
+		\begin{tabular}{c|c}
+			D & 12 \\
+			E & 25  \\
+			F & 4	 \\
+		\end{tabular}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.3\textwidth}
+		\begin{tabular}{c|c}
+			G & 6 \\
+			H & 3  \\
+			I & 15  \\
+		\end{tabular}
+	\end{minipage}
+	\end{center}
+	\vspace{0.5cm}
+	\noindent
+	\begin{minipage}{0.32\textwidth}
+		\begin{forest}
+			for tree={
+				parent anchor=south,
+				child anchor=north,
+				draw,
+				l sep=10mm,
+				s sep=5mm,
+				minimum size=8mm,
+				scale=0.7,
+				transform shape
+			}
+			[N2:28
+			[N1:13, edge label={node[midway, left]{0}}
+			[B:6, tier=word, edge label={node[midway, left]{0}}]
+			[C:7, tier=word, edge label={node[midway, right]{1}}]
+			]
+			[A:15, tier=word, edge label={node[midway, right]{1}}]
+			]
+		\end{forest}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}{0.32\textwidth}
+		\begin{forest}
+			for tree={
+				parent anchor=south,
+				child anchor=north,
+				draw,
+				l sep=10mm,
+				s sep=5mm,
+				minimum size=8mm,
+				scale=0.7,
+				transform shape
+			}
+			[N2:24
+			[N1:9, edge label={node[midway, left]{0}}
+			[H:3, tier=word, edge label={node[midway, left]{0}}]
+			[G:6, tier=word, edge label={node[midway, right]{1}}]
+			]
+			[I:15, tier=word, edge label={node[midway, right]{1}}]
+			]
+		\end{forest}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}{0.32\textwidth}
+		\begin{forest}
+			for tree={
+				parent anchor=south,
+				child anchor=north,
+				draw,
+				l sep=10mm,
+				s sep=5mm,
+				minimum size=8mm,
+				scale=0.7,
+				transform shape
+			}
+			[N2:41
+			[N1:16, edge label={node[midway, left]{0}}
+			[F:4, tier=word, edge label={node[midway, left]{0}}]
+			[D:12, tier=word, edge label={node[midway, right]{1}}]
+			]
+			[E:25, tier=word, edge label={node[midway, right]{1}}]
+			]
+		\end{forest}
+	\end{minipage}
+	\vspace{1.5cm}
+	
+	8. Que debe hacer el receptor si recibe cada uno de estos codigos de Hamming?
+	\begin{enumerate}
+	\item 0 1 1 1 1 1 0 
+	\item 1 1 1 0 0 0 0 
+	\item 0 1 0 1 1 1 0 
+	\item 0 1 1 1 0 1 1 
+	\end{enumerate}
+	%8888888AAAAAAAAAAAAAAAAAAAA
+	\newpage
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{a.} 0111110}}\newline
+		\\Cálculo de control a bits de paridad
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{0} & \textbf{1} & \textbf{1} & \textbf{1} & \textbf{1} & \textbf{1} & \textbf{0}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111\\
+				\midrule
+				\textbf{} & p1 & p2 & & p3 & & & \\
+				\midrule
+				\textbf{p1} & \colorbox{green}{0} & & 1 & & 1 & & 0\\
+				\midrule
+				\textbf{p2} &  & \colorbox{red}{0} & 1 & & 1 & 0  \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{red}{0} & 1 & 1 & 0 \\
+				\midrule
+				\textbf{Resultado} & 0 & 0 & 1 & 0 & 1 & 1 & 0\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
 
+		\begin{center}
+		Haciendo un Xor entre los bits de paridad dados, y los nuevos calculados
+		\vspace{0.1cm}
+		\Xor{p1~p2~p3}{0~~1~~1}{0~~0~~0}[0~~1~~1]\\
+		
+		\vspace{0.5cm}
+		Se lee el resultado en orden inverso nos queda 011 que equivale al número 6, ese es el bit recibido con error.
+		\end{center}
+	\vspace{0.3cm}
+	Dato recibido: 01111\colorbox{red}{1}0\\\\
+	Dato corregido 01111\colorbox{green}{0}0\\
+	
+	
+	%8888888888888888888888888888888888888BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{b.} 1110000}}\newline
+		\\Cálculo de control a bits de paridad
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{1} & \textbf{1} & \textbf{1} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111\\
+				\midrule
+				\textbf{} & p1 & p2 & & p3 & & & \\
+				\midrule
+				\textbf{p1} & \colorbox{green}{1} & & 1 & & 0 & & 0\\
+				\midrule
+				\textbf{p2} &  & \colorbox{green}{1} & 1 & & 0 & 0  \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{green}{0} & 0 & 0 & 0 \\
+				\midrule
+				\textbf{Resultado} & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
+	
+	\begin{center}
+		El código recibido no contiene error 
+	\end{center}
 
-
-
-
-
-
-
-
+	%88888888888888888888888888888888cccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+	\newpage
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{c.} 0101110}}\newline
+		\\Cálculo de control a bits de paridad
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{0} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{1} & \textbf{1} & \textbf{0}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111\\
+				\midrule
+				\textbf{} & p1 & p2 & & p3 & & & \\
+				\midrule
+				\textbf{p1} & \colorbox{red}{1} & & 0 & & 1 & & 0\\
+				\midrule
+				\textbf{p2} &  & \colorbox{green}{1} & 0 & & 1 & 0  \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{red}{0} & 1 & 1 & 0 \\
+				\midrule
+				\textbf{Resultado} & 1 & 1 & 0 & 0 & 1 & 1 & 0\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
+	
+	\begin{center}
+		Haciendo un Xor entre los bits de paridad dados, y los nuevos calculados
+		\vspace{0.1cm}
+		\Xor{p1~p2~p3}{0~~1~~1}{1~~1~~0}[1~~0~~1]\\
+		
+		\vspace{0.5cm}
+		Se lee el resultado en orden inverso nos queda 101 que equivale al número 5, ese es el bit recibido con error.
+	\end{center}
+	\vspace{0.3cm}
+	Dato recibido: 0101\colorbox{red}{1}10\\\\
+	Dato corregido 0101\colorbox{green}{0}10\\
+	
+	%888888888888888888888888888DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+	\begin{center}
+		\hspace{3cm}\colorbox{yellow}{{\textbf{d.} 0111011}}\newline
+		\\Cálculo de control a bits de paridad
+		
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{c|ccccccc}
+				\toprule
+				\textbf{Datos/bits} & \textbf{0} & \textbf{1} & \textbf{1} & \textbf{1} & \textbf{0} & \textbf{1} & \textbf{1}\\ & \scriptsize001 & \scriptsize010 & \scriptsize011 & \scriptsize100 & \scriptsize101 & \scriptsize110 & \scriptsize111\\
+				\midrule
+				\textbf{} & p1 & p2 & & p3 & & & \\
+				\midrule
+				\textbf{p1} & \colorbox{green}{0} & & 1 & & 0 & & 1\\
+				\midrule
+				\textbf{p2} &  & \colorbox{green}{1} & 1 & & 1 & 1  \\
+				\midrule
+				\textbf{p3} & & & & \colorbox{red}{0} & 0 & 1 & 1 \\
+				\midrule
+				\textbf{Resultado} & 0 & 1 & 1 & 0 & 0 & 1 & 1\\
+				\bottomrule
+			\end{tabular}
+		\end{table}
+	\end{center}
+	
+	\begin{center}
+		Haciendo un Xor entre los bits de paridad dados, y los nuevos calculados
+		\vspace{0.1cm}
+		\Xor{p1~p2~p3}{0~~1~~1}{0~~1~~0}[0~~0~~1]\\
+		
+		\vspace{0.5cm}
+		Se lee el resultado en orden inverso nos queda 100 que equivale al número 4, ese es el bit recibido con error.
+	\end{center}
+	\vspace{0.3cm}
+	Dato recibido: 011\colorbox{red}{1}011\\\\
+	Dato corregido 011\colorbox{green}{0}011\\
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 \end{document}
