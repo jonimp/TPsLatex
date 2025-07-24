@@ -48,7 +48,7 @@
 	\end{enumerate}	
 
 	\subsection*{Método de conversión}
-	Este formato conformado por 1 bit para el signo, 8 bits para el exponente y 23 bits para la mantisa, se empieza a componer por el primer bit considerando 1 si es negativo y 0 si es positivo. El siguiente paso es representar el número decimal en binario natural para luego trasladar la coma detrás del primer 1 contando cuantos bits se movieron. Este traslado puede ser tanto para la izquierda como para la derecha, según donde se encuentre el primer 1 partiendo desde la izquierda. Si en el traslado se hace para la izquierda, el número será positivo, en cambio si se trasladara hacia la derecha, el número será negativo. 
+	Para la normalización al formato IEEE754 se debe tener en cuenta que, esta conformado por 1 bit para el signo, 8 bits para el exponente y 23 bits para la mantisa. Se empieza a componer por el primer bit considerando 1 si el número dado es negativo ó 0 en caso de ser positivo. El siguiente paso es representar el número decimal (no hace falta considerar el signo) en binario natural para luego trasladar la coma detrás del primer 1 contando cuantos bits se movieron. Este traslado puede ser tanto para la izquierda como para la derecha, según donde se encuentre el primer 1 partiendo desde la izquierda. Si en el traslado se hace para la izquierda, el número será positivo, en cambio si se trasladara hacia la derecha, el número será negativo. 
 	
 		\begin{center}	
 		\colorbox{yellow}{{\textbf{a.} $-0.00015$}}

@@ -87,7 +87,7 @@
 	\end{enumerate}
 
 	\subsection*{Método de resolución}
-	Para llevar a cabo las operaciones entre números binarios se alinearon a partir de la derecha coincidiendo sus correspondientes posiciones. La suma se efectúa de igual forma que en los números decimales, pero en el caso de operar 1+1 (que es 2 en decimal y 10 en binario) queda un acarreo (marcados en rojo) quedando 0 bajo de la línea de igualdad y "llevando" 1 para ser sumado en la siguiente posición (bit de mayor peso). Si el acarreo llevara un 1 y se tendrían que sumar otros 1 (siendo 3 el resultado en decimal y 11 en binario) queda 1 bajo la línea de igualdad y 1 pasa al bit de mayor peso.
+	Para llevar a cabo las operaciones entre números binarios se alinearon a partir de la derecha coincidiendo sus correspondientes posiciones. La suma se efectúa de igual forma que en los números decimales, pero en el caso de operar 1+1 (que es 2 en decimal y 10 en binario) se genera un acarreo (marcados en rojo) quedando 0 bajo de la línea de igualdad y "llevando" 1 para ser sumado en la siguiente posición (bit de mayor peso). Si el acarreo llevara un 1 y se tendrían que sumar otros 1 (siendo 3 el resultado en decimal y 11 en binario) queda 1 bajo la línea de igualdad y 1 pasa al bit de mayor peso.
 	Para la resta también se opera de forma similar a la decimal y cuando no puede hacerse como ser el caso de 0-1 "se le pide" a la posición de la izquierda (bit de mayor peso), y si este llegara a ser también 0 se llega hasta el próximo 1. En estos sucesivos préstamos siempre se le van restando 1 de forma que una vez que se llega a la cifra que primero pidió el préstamo terminan quedando 10 (2 en decimal) mientras que las intermedias quedan en 1 (en azul quedan marcadas como termina cada posición).\\
 		
 	\begin{center}
@@ -112,8 +112,8 @@
 	\end{enumerate}
 	
 	\subsection*{Método de resolución}
-	Las sumas y restas en octal se hacen de manera similar a la decimal con la salvedad de que al haber solamente 8 símbolos (0-7) cuando nos resulta un número mayor que 7 en el caso de la suma se lo convierte a binario para luego transformarlo a su equivalente octal tomándose de a 3 bits. Por ejemplo: $12_{10} = 1100_2 = 14_8$. \\
-	En el caso de la resta se hace de manera inversa, cuando el minuendo es menor que el sustraendo y tiene que pedirle a la posición de la izquierda, este número que originalmente es octal tiene convertirse al sistema decimal para efectuar la resta.\\ Por ejemplo: $13_8 - 6_8 = 001011_2 - 000110_2 = 11_{10} - 6_{10}$ 
+	Las sumas y restas en octal se hacen de manera análoga a la decimal con la salvedad de que al haber solamente 8 símbolos (0-7) cuando nos resulta un número mayor que 7 en el caso de la suma se lo deberá convertir a binario para luego obtener su equivalencia a octal tomándose de a 3 bits. Por ejemplo: $12_{10} = 1100_2 = 14_8$. \\
+	En el caso de la resta se hace de manera inversa, cuando el minuendo es menor que el sustraendo y tiene que pedirle a la posición de la izquierda, este número que originalmente es octal debe convertirse al sistema decimal para poder razonar la operación de la forma a que estamos acostumbrados de manera decimal.\\ Por ejemplo: $13_8 - 6_8 = 001011_2 - 000110_2 = 11_{10} - 6_{10}$ 
 	
 		\begin{center}
 		\begin{tabular}{ccc}
@@ -182,7 +182,7 @@
 	\end{enumerate}
 
 	\subsection*{Método de resolución} 
-	Al igual que los números en sistema octal, las operaciones de suma y resta se hicieron convirtiendo cada número a su equivalente decimal, aunque los acarreos pasen en su forma hexadecimal. \\ 
+	Las operaciones en sistema hexadecimal se hicieron de la misma forma en que se piensan en sistema decimal, con la salvedad de que en hexa se tienen 16 digitos posibles (de 0 a 9 y luego continúan con A para el número 10 hasta la F que representa el número 15). La forma de operar es la misma que en decimal aunque es importante recordar que cuando una resta no es posible y "le pide prestado al de al lado" este, le suma 16 al número solicitante respetando así, el valor posicional del sistema en que se está operando.\\ 
 	
 	\begin{center}
 		\begin{tabular}{ccc}
