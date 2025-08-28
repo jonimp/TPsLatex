@@ -1,0 +1,45 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[a4paper, top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{INSPT - UTN}
+\lhead{Jonatan Imperi}
+\cfoot{\thepage}
+
+\begin{document}
+	
+	\begin{center}
+		
+		\LARGE \textbf{Sistemas de computación 1} \\[0.5cm]
+		\LARGE Eejrcitación Von Neumann \\
+	\end{center}
+	
+	1) \hangindent=3em Carga el valor 00FF en el Registro R0 y el valor 000F en el Registro R1. Realiza las siguientes operaciones secuencialmente:
+	Resta el contenido de R1 a R0, almacenando el resultado en R2.
+	\begin{enumerate}
+		\item Realiza un OR bit a bit entre R0 y R1, almacenando el resultado en R3.
+		\item Incrementa el valor de R2 en una unidad.
+		\item Realiza un NOT bit a bit sobre el contenido de R3, almacenando el resultado en R4.
+		\item Compara el valor final de R2 con el valor final de R4.
+	\end{enumerate}
+
+	\begin{tabular}{c|c|l|c}
+	\textbf{Posición memoria} & \textbf{Código binario} & \textbf{Mnemotécnico} & \textbf{Código Hexadecimal}\\
+	\hline
+	0100 & 0010 1000 0000 0000 & MOVH R0, 00 & 2800 \\
+	0101 & 0010 0000 1111 1111 & MOVL R0, FF & 20FF \\
+	0102 & 0010 1001 0000 0000 & MOVH R1, 00 & 2900 \\
+	0103 & 0010 0001 0000 1111 & MOVL R1, 0F & 210F \\
+	0104 & 0100 1010 0000 0100 & SUB R2, R0, R1 & 4A04 \\
+	0105 & 0101 0011 0000 0100 & OR R3, R0, R1 & 5304 \\
+	0106 & 1000 1010 0000 0000 & INC R2 & 8A00 \\
+	0107 & 1000 0011 0000 0000 & NOT R3 & 8300 \\
+	0108 & 0000 1100 0110 0000 & MOV R4, R3 & 0C60 \\
+	0109 & 0110 1010 1000 0000 & COMP R2, R4 & 6A80 \\
+	\end{tabular}	
+	
+\end{document}
