@@ -1,0 +1,52 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[a4paper, top=2.5cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{enumitem}
+\usepackage{xparse}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{INSPT - UTN}
+\lhead{Jonatan Imperi}
+\cfoot{\thepage}
+
+\begin{document}
+	
+	\begin{center}
+		
+		\LARGE \textbf{Sistemas de computación 1} \\[0.5cm]
+		\LARGE Ejercitación máquina de Brookshear \\
+	\end{center}
+	
+	\vspace{1cm}
+	
+	1) \hangindent=3em Llenar las últimas 10 direcciones de la memoria con los primeros 10 múltiplos naturales del contenido de la	posición 02, si éste es natural.
+
+	\vspace{0.5cm}
+
+	\renewcommand{\arraystretch}{1.1}
+	\begin{tabular}{l|c|l}
+		\textbf{Pos. memoria} &\textbf{Instrucción} & \textbf{Detalle}\\
+		\hline
+		00 / 01 & B004  & Salta a la instrucción 04 \\ 
+		02 / 03 & 02F6  & Contiene el dato a tratar \\
+		04 / 05 & 2101  & Se cargó el registro 1 con el valor 01 \\
+		06 / 07 & 22FF  & Se cargó el registro 2 con el valor FF (-1) \\
+		08 / 09 & 1302  & Se cargó R3 con el contenido de la celda de memoria 02 \\
+		0A / 0B & 1403  & Se cargó R4 con el contenido de la celda de memoria 03 \\
+		0C / 0D & 2509  & Se cargó el registro 5 con el valor 09\\
+		0E / 0F & 5636  & Se suman los R3 y R6 guardandose en R6 \\
+		10 / 11 & 36F6  & Se copia el contenido de R6 en la celda F6 \\
+		12 / 13 & 5414  & Se suman R1 y R4 guardandose en R4 \\
+		14 / 15 & 3411  & Se copia el contenido de R4 en la celda 11 \\
+		16 / 17 & B51C  & Compara R0 con R5, si son iguales (a 0), salta a 1C \\
+		18 / 19 & 5525  & Se suman R2 y R5 guardandose en R5 \\
+		1A / 1B & B00E  & Salta a la instrucción 0E \\
+		1C / 1D & C000  & Fin del programa \\
+	\end{tabular}
+
+\end{document}
